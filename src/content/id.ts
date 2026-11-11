@@ -1,0 +1,320 @@
+import type { Dictionary } from "./types";
+
+/**
+ * Teks Bahasa Indonesia untuk seluruh halaman. Ubah teks di antara tanda kutip.
+ * Placeholder dalam {kurung kurawal} diisi otomatis dari src/config (lihat types.ts).
+ */
+export const id: Dictionary = {
+  meta: {
+    title: "Reuben Susanto Tutoring | Les IGCSE, A Level & IB Matematika, Fisika, Kimia",
+    description:
+      "Les privat online Matematika, Fisika, dan Kimia untuk siswa IGCSE, O Level, A Level, dan IB. Diajarkan dalam Bahasa Inggris atau Bahasa Indonesia oleh pengajar dengan pengalaman lebih dari {years} tahun. Konsultasi gratis {consultMinutes} menit.",
+  },
+  whatsappMessage: "Halo Reuben, saya ingin bertanya tentang les privat.",
+  nav: {
+    subjects: "Mata pelajaran",
+    rates: "Biaya",
+    experience: "Pengalaman",
+    faq: "FAQ",
+    contact: "Kontak",
+    languageLabel: "Bahasa",
+    openMenu: "Buka menu",
+    closeMenu: "Tutup menu",
+    skipToContent: "Langsung ke konten",
+  },
+  hero: {
+    eyebrow: "Online via Zoom · Bahasa Inggris & Bahasa Indonesia",
+    title: "Les Matematika, Fisika, dan Kimia yang jelas dan fokus pada ujian",
+    sub: "Les privat satu lawan satu untuk siswa IGCSE, O Level, A Level, dan IB bersama Reuben Susanto, pengajar dengan pengalaman mengajar lebih dari {years} tahun. Untuk keluarga di seluruh Indonesia dan zona waktu terdekat.",
+    ctaConsult: "Jadwalkan konsultasi gratis",
+    ctaWhatsApp: "Chat via WhatsApp",
+    glanceTitle: "Sekilas",
+    glance: [
+      { k: "Mata pelajaran", v: "Matematika, Fisika, Kimia" },
+      { k: "Jenjang", v: "IGCSE, O Level, A Level, IB" },
+      { k: "Format", v: "Les privat 1-on-1 via Zoom" },
+      { k: "Bahasa", v: "Inggris, Indonesia" },
+      { k: "Jadwal", v: "Waktu Jakarta (WIB, UTC+7)" },
+      { k: "Biaya", v: "Mulai {fromPrice} per sesi" },
+    ],
+    trust: [
+      { value: "{years}+ tahun", label: "mengajar les privat" },
+      { value: "1-on-1", label: "les privat via Zoom" },
+      { value: "EN · ID", label: "Bahasa Inggris atau Indonesia" },
+      { value: "{consultMinutes} menit", label: "konsultasi pertama gratis" },
+    ],
+  },
+  subjects: {
+    title: "Mata pelajaran dan jenjang",
+    intro: "Kurikulum Cambridge dan IB untuk siswa sekolah internasional dan nasional plus.",
+    items: [
+      {
+        symbol: "∑",
+        name: "Matematika",
+        levels: "IGCSE · O Level · AS/A Level · IB",
+        desc: "Dari aljabar dan geometri hingga kalkulus dan statistika, dengan latihan soal bergaya ujian di setiap topik.",
+        codes: "Cambridge 0580 · 0606 · 4024 · 9709",
+      },
+      {
+        symbol: "F=ma",
+        name: "Fisika",
+        levels: "IGCSE · IB",
+        desc: "Gaya, energi, gelombang, dan listrik dijelaskan langkah demi langkah, dengan banyak contoh soal.",
+        codes: "Cambridge 0625",
+      },
+      {
+        symbol: "H₂O",
+        name: "Kimia",
+        levels: "IGCSE · IB",
+        desc: "Struktur atom, ikatan, dan reaksi, serta cara yang jelas untuk perhitungan seperti mol dan konsentrasi.",
+        codes: "Cambridge 0620",
+      },
+      {
+        symbol: "</>",
+        name: "Ilmu Komputer & Python",
+        levels: "IGCSE · Pemula",
+        desc: "Pemrograman dan berpikir komputasional, diajar oleh mahasiswa Ilmu Komputer yang membangun sistem AI.",
+        codes: "Cambridge 0478",
+        badge: "Segera hadir",
+      },
+    ],
+  },
+  why: {
+    title: "Mengapa orang tua memilih Reuben",
+    intro: "Yang didapat anak Anda di setiap sesi les.",
+    items: [
+      {
+        title: "Pengalaman mengajar {years}+ tahun",
+        text: "Reuben telah mengajar les privat selama lebih dari satu dekade, serta pernah menjadi asisten dosen di universitas dan pengajar di Mantappu Academy.",
+      },
+      {
+        title: "Mengikuti silabus anak Anda",
+        text: "Materi mengikuti silabus yang sedang dipelajari anak Anda di sekolah, dengan soal bergaya ujian agar ia siap menghadapi hari ujian.",
+      },
+      {
+        title: "Bahasa Inggris atau Bahasa Indonesia",
+        text: "Reuben berganti bahasa kapan saja agar konsep lebih mudah dipahami, cocok untuk siswa sekolah internasional maupun nasional plus.",
+      },
+      {
+        title: "Privat, dari rumah",
+        text: "Setiap sesi bersifat privat dan berlangsung via Zoom, jadi tidak perlu perjalanan dan jadwal bisa menyesuaikan sekolah serta kegiatan lain.",
+      },
+    ],
+  },
+  rates: {
+    title: "Biaya sederhana, per sesi",
+    intro: "Setiap sesi adalah les privat {sessionMinutes} menit via Zoom. Biaya hanya bergantung pada jenjang anak Anda.",
+    tableTitle: "Biaya per sesi {sessionMinutes} menit",
+    perSession: "per sesi",
+    levels: {
+      igcse: { name: "IGCSE & O Level", note: "Matematika · Fisika · Kimia" },
+      alevel: { name: "AS & A Level", note: "Matematika" },
+      ib: { name: "IB", note: "Matematika · Fisika · Kimia" },
+    },
+    notes: [
+      "Disarankan {sessionsPerWeek} sesi per minggu agar kemajuan konsisten",
+      "Satu tarif per sesi, tanpa paket yang harus dibeli",
+      "Konsultasi gratis {consultMinutes} menit sebelum Anda memutuskan",
+    ],
+    ctaConsult: "Jadwalkan konsultasi gratis",
+    ctaWhatsApp: "Tanya via WhatsApp",
+  },
+  how: {
+    title: "Cara kerja",
+    intro: "Tiga langkah dari pesan pertama hingga les rutin.",
+    steps: [
+      {
+        title: "Hubungi saya",
+        text: "Kirim pesan WhatsApp atau isi formulir dengan mata pelajaran, jenjang, dan tanggal ujian anak Anda.",
+      },
+      {
+        title: "Konsultasi gratis {consultMinutes} menit",
+        text: "Anda, anak Anda, dan Reuben bertemu di Zoom untuk melihat kemampuan anak, menentukan target, dan memilih jadwal. Tanpa biaya dan tanpa kewajiban untuk lanjut.",
+      },
+      {
+        title: "Les rutin",
+        text: "Les privat via Zoom di waktu yang sesuai untuk keluarga Anda, membahas silabus topik demi topik. Disarankan {sessionsPerWeek} sesi per minggu.",
+      },
+    ],
+  },
+  experience: {
+    title: "Pengalaman mengajar",
+    intro: "Lebih dari satu dekade membantu siswa memahami Matematika dan Sains, baik di les privat maupun di kelas.",
+    items: [
+      {
+        period: "{years}+ tahun",
+        role: "Pengajar les privat",
+        place: "Freelance · Jakarta",
+        text: "Les privat Matematika, Fisika, dan Kimia untuk siswa IGCSE, O Level, A Level, dan IB.",
+      },
+      {
+        period: "1 tahun",
+        role: "Pengajar",
+        place: "Mantappu Academy",
+        text: "Mengajar siswa sebagai pengajar di Mantappu Academy.",
+      },
+      {
+        period: "1 tahun",
+        role: "Asisten dosen",
+        place: "Calvin Institute of Technology",
+        text: "Mendampingi sesama mahasiswa sebagai asisten dosen.",
+      },
+      {
+        period: "2025 hingga 2026",
+        role: "Koordinator program tutorial",
+        place: "Calvin Institute of Technology",
+        text: "Menjalankan program tutorial pemrograman Python serta Struktur Data & Algoritma.",
+      },
+      {
+        period: "2025",
+        role: "Pengajar sukarelawan",
+        place: "“Mobil Pintar” · Yayasan Pondok Indah Kasih",
+        text: "Mengajar anak-anak melalui program belajar keliling di Jakarta.",
+      },
+    ],
+    credentialsTitle: "Latar belakang akademik",
+    credentials: [
+      "Ilmu Komputer, Calvin Institute of Technology",
+      "IPK 3,90 dari 4,00",
+      "Rector's List 2024 dan 2025",
+      "Juara 1 Technofest UBM 2026",
+    ],
+  },
+  about: {
+    title: "Tentang Reuben",
+    photoAlt: "Foto Reuben Susanto",
+    paragraphs: [
+      "Saya Reuben Zachary Susanto, pengajar les privat di Jakarta. Saya telah mengajar selama lebih dari {years} tahun, dan saya mendampingi setiap siswa secara privat agar materi mengikuti kecepatan belajarnya.",
+      "Selain mengajar, saya adalah mahasiswa tingkat akhir Ilmu Komputer di Calvin Institute of Technology dengan peminatan AI Engineering. Latar belakang ini membentuk cara saya mengajar: memecah soal yang sulit menjadi langkah-langkah yang jelas sampai caranya dipahami.",
+      "Semua les dilakukan online via Zoom, dalam Bahasa Inggris atau Bahasa Indonesia, sesuai yang paling membantu anak Anda.",
+    ],
+    tags: ["IGCSE · O Level · A Level · IB", "Matematika · Fisika · Kimia", "Inggris · Indonesia", "Online via Zoom"],
+  },
+  regions: {
+    title: "Untuk siswa di Indonesia dan zona waktu terdekat",
+    sub: "Jadwal les mengikuti waktu Jakarta (WIB, UTC+7). Siswa yang berada dalam selisih sekitar tiga jam dari WIB dipersilakan bergabung.",
+    items: [
+      "Indonesia (WIB, WITA, WIT)",
+      "Singapura",
+      "Malaysia",
+      "Brunei",
+      "Filipina",
+      "Thailand",
+      "Vietnam",
+      "Hong Kong",
+      "Taiwan",
+      "Jepang",
+      "Korea Selatan",
+      "Australia Barat",
+      "Queensland",
+      "India",
+      "Uni Emirat Arab",
+    ],
+  },
+  faq: {
+    title: "Pertanyaan yang sering diajukan",
+    items: [
+      {
+        q: "Berapa biaya les?",
+        a: "Per sesi {sessionMinutes} menit: {priceIgcse} untuk IGCSE dan O Level, {priceAlevel} untuk AS dan A Level, serta {priceIb} untuk IB. Tidak ada paket atau diskon, dan konsultasi pertama selama {consultMinutes} menit gratis.",
+      },
+      {
+        q: "Bagaimana konsultasi gratisnya?",
+        a: "Berupa panggilan Zoom {consultMinutes} menit bersama Anda, anak Anda, dan Reuben. Kita melihat kemampuan anak, menentukan target, dan memilih jadwal. Tanpa biaya dan tanpa kewajiban untuk lanjut.",
+      },
+      {
+        q: "Berapa kali les dalam seminggu?",
+        a: "Disarankan {sessionsPerWeek} sesi per minggu agar kemajuan konsisten. Kita bisa membahas yang paling sesuai untuk anak Anda saat konsultasi.",
+      },
+      {
+        q: "Apakah les dalam Bahasa Inggris atau Bahasa Indonesia?",
+        a: "Bisa keduanya, atau campuran. Kita gunakan bahasa yang paling membantu anak Anda memahami materi.",
+      },
+      {
+        q: "Les menggunakan zona waktu apa?",
+        a: "Jadwal les mengikuti WIB (UTC+7). Siswa dalam selisih sekitar tiga jam dari waktu Jakarta, seperti Singapura, Malaysia, Jepang, atau Australia Barat, dipersilakan bergabung.",
+      },
+      {
+        q: "Apa yang dibutuhkan untuk les online?",
+        a: "Laptop atau tablet dengan Zoom dan koneksi internet yang stabil.",
+      },
+      {
+        q: "Apakah jadwal les bisa diubah?",
+        a: "Silakan hubungi Reuben via WhatsApp sedini mungkin. Ketentuannya disepakati bersama setiap keluarga saat konsultasi.",
+      },
+    ],
+  },
+  contact: {
+    title: "Jadwalkan konsultasi gratis",
+    sub: "Ceritakan sedikit tentang anak Anda, dan saya akan membalas via WhatsApp untuk mengatur panggilan Zoom gratis selama {consultMinutes} menit.",
+    whatsappLabel: "WhatsApp",
+    emailLabel: "Email",
+    hoursLabel: "Jam mengajar",
+    hoursSuffix: "WIB",
+    form: {
+      title: "Kirim pertanyaan",
+      name: "Nama Anda",
+      role: "Saya adalah",
+      roles: { parent: "Orang tua", student: "Siswa" },
+      subject: "Mata pelajaran",
+      subjects: [
+        { value: "Mathematics", label: "Matematika" },
+        { value: "Physics", label: "Fisika" },
+        { value: "Chemistry", label: "Kimia" },
+        { value: "Computer Science", label: "Ilmu Komputer (segera hadir)" },
+      ],
+      level: "Jenjang",
+      levels: [
+        { value: "IGCSE", label: "IGCSE" },
+        { value: "O Level", label: "O Level" },
+        { value: "AS/A Level", label: "AS / A Level" },
+        { value: "IB", label: "IB" },
+        { value: "Not sure yet", label: "Belum yakin" },
+      ],
+      phone: "Nomor WhatsApp",
+      email: "Email",
+      optional: "opsional",
+      message: "Pesan",
+      messagePlaceholder: "contoh: Kelas 10, ujian IGCSE Mei/Juni 2027",
+      submit: "Kirim pertanyaan",
+      sending: "Mengirim…",
+      note: "Data Anda hanya digunakan untuk membalas pertanyaan Anda.",
+      required: "Mohon isi kolom ini.",
+      invalidPhone: "Mohon masukkan nomor WhatsApp yang valid.",
+      invalidEmail: "Mohon masukkan alamat email yang valid.",
+      sentTitle: "Terima kasih!",
+      sentText: "Pertanyaan Anda sudah terkirim. Saya akan segera menghubungi Anda via WhatsApp.",
+      sendAnother: "Kirim pertanyaan lain",
+      errorTitle: "Pertanyaan Anda belum terkirim",
+      errorText: "Silakan coba lagi, atau hubungi saya langsung:",
+    },
+  },
+  footer: {
+    tagline: "Les privat online Matematika, Fisika, dan Kimia, dalam Bahasa Inggris dan Bahasa Indonesia.",
+    contactTitle: "Kontak",
+    exploreTitle: "Jelajahi",
+    rights: "Hak cipta dilindungi.",
+  },
+  chat: {
+    open: "Ajukan pertanyaan",
+    close: "Tutup chat",
+    title: "Tanya tentang les",
+    subtitle: "Asisten AI",
+    greeting:
+      "Halo! Saya bisa menjawab pertanyaan tentang les bersama Reuben, seperti mata pelajaran, biaya, dan cara memulai. Apa yang ingin Anda ketahui?",
+    suggestions: [
+      "Berapa biaya les IGCSE?",
+      "Bagaimana konsultasi gratisnya?",
+      "Mata pelajaran dan jenjang apa saja yang diajarkan?",
+      "Apa pengalaman mengajar Reuben?",
+    ],
+    placeholder: "Ketik pertanyaan Anda…",
+    send: "Kirim",
+    thinking: "Sedang berpikir…",
+    error: "Maaf, saya belum bisa menjawab saat ini. Silakan coba lagi, atau hubungi Reuben via WhatsApp.",
+    whatsapp: "Chat dengan Reuben via WhatsApp",
+    bookingPrompt: "Siap mengatur konsultasi gratis Anda?",
+    disclaimer: "Ini adalah asisten AI. Mohon konfirmasi hal penting langsung dengan Reuben.",
+    clear: "Hapus chat",
+  },
+};

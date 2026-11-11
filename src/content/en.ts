@@ -1,0 +1,320 @@
+import type { Dictionary } from "./types";
+
+/**
+ * English wording for the whole page. Edit the text between the quotes.
+ * Placeholders in {braces} are filled in from src/config (see types.ts).
+ */
+export const en: Dictionary = {
+  meta: {
+    title: "Reuben Susanto Tutoring | IGCSE, A Level & IB Maths, Physics, Chemistry",
+    description:
+      "Private one-to-one online tutoring in Maths, Physics and Chemistry for IGCSE, O Level, A Level and IB students. Taught in English or Bahasa Indonesia by a tutor with {years}+ years of experience. Free {consultMinutes}-minute consultation.",
+  },
+  whatsappMessage: "Hello Reuben, I'd like to ask about tutoring.",
+  nav: {
+    subjects: "Subjects",
+    rates: "Rates",
+    experience: "Experience",
+    faq: "FAQ",
+    contact: "Contact",
+    languageLabel: "Language",
+    openMenu: "Open menu",
+    closeMenu: "Close menu",
+    skipToContent: "Skip to content",
+  },
+  hero: {
+    eyebrow: "Online via Zoom · English & Bahasa Indonesia",
+    title: "Clear, exam-focused tutoring in Maths, Physics and Chemistry",
+    sub: "Private one-to-one lessons for IGCSE, O Level, A Level and IB students with Reuben Susanto, a tutor with more than {years} years of teaching experience. For families across Indonesia and nearby time zones.",
+    ctaConsult: "Book a free consultation",
+    ctaWhatsApp: "Chat on WhatsApp",
+    glanceTitle: "At a glance",
+    glance: [
+      { k: "Subjects", v: "Maths, Physics, Chemistry" },
+      { k: "Levels", v: "IGCSE, O Level, A Level, IB" },
+      { k: "Format", v: "Private 1-to-1 lessons on Zoom" },
+      { k: "Languages", v: "English, Bahasa Indonesia" },
+      { k: "Schedule", v: "Jakarta time (WIB, UTC+7)" },
+      { k: "Rates", v: "From {fromPrice} per session" },
+    ],
+    trust: [
+      { value: "{years}+ years", label: "of private teaching" },
+      { value: "1-to-1", label: "private lessons on Zoom" },
+      { value: "EN · ID", label: "English or Bahasa Indonesia" },
+      { value: "{consultMinutes} min", label: "free first consultation" },
+    ],
+  },
+  subjects: {
+    title: "Subjects and levels",
+    intro: "Cambridge and IB syllabuses for students at international and national-plus schools.",
+    items: [
+      {
+        symbol: "∑",
+        name: "Mathematics",
+        levels: "IGCSE · O Level · AS/A Level · IB",
+        desc: "From algebra and geometry to calculus and statistics, with exam-style practice on every topic.",
+        codes: "Cambridge 0580 · 0606 · 4024 · 9709",
+      },
+      {
+        symbol: "F=ma",
+        name: "Physics",
+        levels: "IGCSE · IB",
+        desc: "Forces, energy, waves and electricity explained step by step, with plenty of worked problems.",
+        codes: "Cambridge 0625",
+      },
+      {
+        symbol: "H₂O",
+        name: "Chemistry",
+        levels: "IGCSE · IB",
+        desc: "Atomic structure, bonding and reactions, plus clear methods for calculations like moles and concentration.",
+        codes: "Cambridge 0620",
+      },
+      {
+        symbol: "</>",
+        name: "Computer Science & Python",
+        levels: "IGCSE · Beginners",
+        desc: "Programming and computational thinking, taught by a Computer Science student who builds AI systems.",
+        codes: "Cambridge 0478",
+        badge: "Coming soon",
+      },
+    ],
+  },
+  why: {
+    title: "Why parents choose Reuben",
+    intro: "What your child gets from every lesson.",
+    items: [
+      {
+        title: "{years}+ years of teaching experience",
+        text: "Reuben has taught privately for more than a decade, and has also worked as a university teaching assistant and as a tutor at Mantappu Academy.",
+      },
+      {
+        title: "Built around your child's syllabus",
+        text: "Lessons follow the syllabus your child is studying at school, with exam-style questions so they know what to expect on the day.",
+      },
+      {
+        title: "English or Bahasa Indonesia",
+        text: "Reuben switches languages whenever it helps a concept click, which suits both international and national-plus school students.",
+      },
+      {
+        title: "One-to-one, from home",
+        text: "Every lesson is private and runs on Zoom, so there is no travel and lessons fit around school and activities.",
+      },
+    ],
+  },
+  rates: {
+    title: "Simple rates, per lesson",
+    intro: "Every lesson is a private {sessionMinutes}-minute session on Zoom. The rate depends only on your child's level.",
+    tableTitle: "Rate per {sessionMinutes}-minute lesson",
+    perSession: "per session",
+    levels: {
+      igcse: { name: "IGCSE & O Level", note: "Maths · Physics · Chemistry" },
+      alevel: { name: "AS & A Level", note: "Mathematics" },
+      ib: { name: "IB", note: "Maths · Physics · Chemistry" },
+    },
+    notes: [
+      "{sessionsPerWeek} sessions per week are recommended for steady progress",
+      "One rate per lesson, with no packages to buy",
+      "A free {consultMinutes}-minute consultation before you commit",
+    ],
+    ctaConsult: "Book a free consultation",
+    ctaWhatsApp: "Ask on WhatsApp",
+  },
+  how: {
+    title: "How it works",
+    intro: "Three steps from first message to regular lessons.",
+    steps: [
+      {
+        title: "Get in touch",
+        text: "Send a WhatsApp message or fill in the form with your child's subject, level and upcoming exam date.",
+      },
+      {
+        title: "Free {consultMinutes}-minute consultation",
+        text: "You, your child and Reuben meet on Zoom to see where your child is, agree on goals and choose a schedule. There is no charge and no obligation.",
+      },
+      {
+        title: "Regular lessons",
+        text: "Private Zoom lessons at a time that suits your family, working through the syllabus topic by topic. {sessionsPerWeek} sessions a week are recommended.",
+      },
+    ],
+  },
+  experience: {
+    title: "Teaching experience",
+    intro: "More than a decade of helping students understand Maths and Science, in private lessons and in the classroom.",
+    items: [
+      {
+        period: "{years}+ years",
+        role: "Private tutor",
+        place: "Freelance · Jakarta",
+        text: "One-to-one lessons in Maths, Physics and Chemistry for IGCSE, O Level, A Level and IB students.",
+      },
+      {
+        period: "1 year",
+        role: "Tutor",
+        place: "Mantappu Academy",
+        text: "Taught students as a tutor at Mantappu Academy.",
+      },
+      {
+        period: "1 year",
+        role: "Teaching assistant",
+        place: "Calvin Institute of Technology",
+        text: "Supported fellow university students as a teaching assistant.",
+      },
+      {
+        period: "2025 to 2026",
+        role: "Tutorial programme coordinator",
+        place: "Calvin Institute of Technology",
+        text: "Ran tutorial programmes in Python programming and Data Structures & Algorithms.",
+      },
+      {
+        period: "2025",
+        role: "Volunteer teacher",
+        place: "“Mobil Pintar” · Yayasan Pondok Indah Kasih",
+        text: "Taught children through a mobile learning programme in Jakarta.",
+      },
+    ],
+    credentialsTitle: "Academic background",
+    credentials: [
+      "Computer Science, Calvin Institute of Technology",
+      "GPA 3.90 out of 4.00",
+      "Rector's List 2024 and 2025",
+      "1st winner, Technofest UBM 2026",
+    ],
+  },
+  about: {
+    title: "About Reuben",
+    photoAlt: "Portrait of Reuben Susanto",
+    paragraphs: [
+      "I'm Reuben Zachary Susanto, a private tutor based in Jakarta. I have been teaching for more than {years} years, and I work with each student one-to-one so lessons move at their pace.",
+      "Alongside tutoring, I'm a final-year Computer Science student at Calvin Institute of Technology, specialising in AI Engineering. That background shapes how I teach: breaking a hard problem into clear steps until the method makes sense.",
+      "Every lesson is online through Zoom, in English or Bahasa Indonesia, whichever helps your child most.",
+    ],
+    tags: ["IGCSE · O Level · A Level · IB", "Maths · Physics · Chemistry", "English · Bahasa Indonesia", "Online via Zoom"],
+  },
+  regions: {
+    title: "For students in Indonesia and nearby time zones",
+    sub: "Lessons are scheduled in Jakarta time (WIB, UTC+7). Students anywhere within about three hours of WIB are welcome.",
+    items: [
+      "Indonesia (WIB, WITA, WIT)",
+      "Singapore",
+      "Malaysia",
+      "Brunei",
+      "Philippines",
+      "Thailand",
+      "Vietnam",
+      "Hong Kong",
+      "Taiwan",
+      "Japan",
+      "South Korea",
+      "Western Australia",
+      "Queensland",
+      "India",
+      "UAE",
+    ],
+  },
+  faq: {
+    title: "Frequently asked questions",
+    items: [
+      {
+        q: "How much do lessons cost?",
+        a: "Per {sessionMinutes}-minute lesson: {priceIgcse} for IGCSE and O Level, {priceAlevel} for AS and A Level, and {priceIb} for IB. There are no packages or discounts, and the first {consultMinutes}-minute consultation is free.",
+      },
+      {
+        q: "How does the free consultation work?",
+        a: "It is a {consultMinutes}-minute Zoom call with you, your child and Reuben. We look at where your child is, agree on goals and choose a schedule. There is no charge and no obligation to continue.",
+      },
+      {
+        q: "How many lessons a week does my child need?",
+        a: "{sessionsPerWeek} sessions per week are recommended for steady progress. We can discuss what suits your child in the consultation.",
+      },
+      {
+        q: "Are lessons in English or Bahasa Indonesia?",
+        a: "Either, or a mix of both. We use whichever helps your child understand best.",
+      },
+      {
+        q: "Which time zone are lessons in?",
+        a: "Lessons are scheduled in WIB (UTC+7). Students within about three hours of Jakarta time, such as Singapore, Malaysia, Japan or Western Australia, are welcome.",
+      },
+      {
+        q: "What does my child need for online lessons?",
+        a: "A laptop or tablet with Zoom installed and a stable internet connection.",
+      },
+      {
+        q: "Can lessons be rescheduled?",
+        a: "Please message Reuben on WhatsApp as early as you can. The details are agreed with each family during the consultation.",
+      },
+    ],
+  },
+  contact: {
+    title: "Book your free consultation",
+    sub: "Tell me a little about your child and I'll reply on WhatsApp to arrange a free {consultMinutes}-minute Zoom call.",
+    whatsappLabel: "WhatsApp",
+    emailLabel: "Email",
+    hoursLabel: "Teaching hours",
+    hoursSuffix: "WIB",
+    form: {
+      title: "Send an enquiry",
+      name: "Your name",
+      role: "I am a",
+      roles: { parent: "Parent", student: "Student" },
+      subject: "Subject",
+      subjects: [
+        { value: "Mathematics", label: "Mathematics" },
+        { value: "Physics", label: "Physics" },
+        { value: "Chemistry", label: "Chemistry" },
+        { value: "Computer Science", label: "Computer Science (coming soon)" },
+      ],
+      level: "Level",
+      levels: [
+        { value: "IGCSE", label: "IGCSE" },
+        { value: "O Level", label: "O Level" },
+        { value: "AS/A Level", label: "AS / A Level" },
+        { value: "IB", label: "IB" },
+        { value: "Not sure yet", label: "Not sure yet" },
+      ],
+      phone: "WhatsApp number",
+      email: "Email",
+      optional: "optional",
+      message: "Message",
+      messagePlaceholder: "e.g. Year 10, IGCSE exams in May/June 2027",
+      submit: "Send enquiry",
+      sending: "Sending…",
+      note: "Your details are only used to reply to your enquiry.",
+      required: "Please fill in this field.",
+      invalidPhone: "Please enter a valid WhatsApp number.",
+      invalidEmail: "Please enter a valid email address.",
+      sentTitle: "Thank you!",
+      sentText: "Your enquiry has been sent. I'll contact you on WhatsApp soon.",
+      sendAnother: "Send another enquiry",
+      errorTitle: "Your enquiry could not be sent",
+      errorText: "Please try again, or reach me directly:",
+    },
+  },
+  footer: {
+    tagline: "Private online tutoring in Maths, Physics and Chemistry, in English and Bahasa Indonesia.",
+    contactTitle: "Contact",
+    exploreTitle: "Explore",
+    rights: "All rights reserved.",
+  },
+  chat: {
+    open: "Ask a question",
+    close: "Close chat",
+    title: "Ask about lessons",
+    subtitle: "AI assistant",
+    greeting:
+      "Hello! I can answer questions about Reuben's lessons, such as subjects, rates and how to get started. What would you like to know?",
+    suggestions: [
+      "How much are IGCSE lessons?",
+      "How does the free consultation work?",
+      "Which subjects and levels do you teach?",
+      "What is Reuben's teaching experience?",
+    ],
+    placeholder: "Type your question…",
+    send: "Send",
+    thinking: "Thinking…",
+    error: "Sorry, I couldn't answer just now. Please try again, or message Reuben on WhatsApp.",
+    whatsapp: "Chat with Reuben on WhatsApp",
+    bookingPrompt: "Ready to arrange your free consultation?",
+    disclaimer: "This is an AI assistant. Please confirm important details with Reuben.",
+    clear: "Clear chat",
+  },
+};
