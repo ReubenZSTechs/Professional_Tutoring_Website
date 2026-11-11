@@ -10,9 +10,9 @@ export function HowItWorks({ t }: SectionProps) {
         <SectionHeading title={t.how.title} intro={t.how.intro} />
         <ol className="grid gap-6 md:grid-cols-3">
           {t.how.steps.map((step, index) => (
-            <li key={step.title} className="reveal flex flex-col gap-3 rounded-[18px] border border-line p-7">
-              <span className="text-[44px] leading-none font-extrabold text-blue">{index + 1}</span>
-              <h3 className="text-xl font-extrabold">{step.title}</h3>
+            <li key={step.title} className="reveal flex flex-col gap-3 rounded-[18px] border border-line bg-card p-7">
+              <span className="text-[44px] leading-none font-extrabold text-link">{index + 1}</span>
+              <h3 className="text-xl font-extrabold text-ink">{step.title}</h3>
               <p className="text-[15px] leading-relaxed text-body">{step.text}</p>
             </li>
           ))}

@@ -51,9 +51,9 @@ export function ChatWidget({ t, lang }: { t: Dictionary; lang: Lang }) {
       <button
         type="button"
         onClick={() => setOpen(true)}
-        className="fixed right-4 bottom-4 z-50 flex min-h-14 cursor-pointer items-center gap-2.5 rounded-full bg-navy pr-5 pl-4 text-[15px] font-bold text-white shadow-[0_10px_30px_rgb(16_35_63/0.35)] ring-2 ring-white transition-transform hover:-translate-y-0.5 sm:right-6 sm:bottom-6"
+        className="fixed right-4 bottom-4 z-50 flex min-h-14 cursor-pointer items-center gap-2.5 rounded-full bg-brand pr-5 pl-4 text-[15px] font-bold text-on-brand shadow-float ring-2 ring-page transition-transform hover:-translate-y-0.5 sm:right-6 sm:bottom-6 dark:ring-line"
       >
-        <span className="flex size-8 items-center justify-center rounded-full bg-accent text-navy">
+        <span className="flex size-8 items-center justify-center rounded-full bg-accent text-on-accent">
           <SparkIcon size={18} />
         </span>
         {c.open}
@@ -64,16 +64,16 @@ export function ChatWidget({ t, lang }: { t: Dictionary; lang: Lang }) {
   return (
     <section
       aria-label={c.title}
-      className="fixed inset-x-3 bottom-3 z-50 flex h-[min(620px,calc(100dvh-24px))] flex-col overflow-hidden rounded-[20px] border border-line bg-white shadow-[0_24px_60px_rgb(16_35_63/0.28)] sm:inset-x-auto sm:right-6 sm:bottom-6 sm:w-[392px]"
+      className="fixed inset-x-3 bottom-3 z-50 flex h-[min(620px,calc(100dvh-24px))] flex-col overflow-hidden rounded-[20px] border border-line bg-card shadow-float sm:inset-x-auto sm:right-6 sm:bottom-6 sm:w-[392px]"
       style={{ animation: "chat-in 0.18s ease-out" }}
     >
-      <header className="on-navy flex items-center gap-3 bg-navy px-4 py-3.5 text-white">
-        <span className="flex size-10 shrink-0 items-center justify-center rounded-full bg-accent text-navy">
+      <header className="on-brand flex items-center gap-3 border-b border-brand-edge bg-brand px-4 py-3.5 text-on-brand">
+        <span className="flex size-10 shrink-0 items-center justify-center rounded-full bg-accent text-on-accent">
           <SparkIcon size={20} />
         </span>
         <div className="flex min-w-0 flex-1 flex-col leading-tight">
           <h2 className="truncate text-base font-extrabold">{c.title}</h2>
-          <span className="text-[13px] font-medium text-on-navy">{c.subtitle}</span>
+          <span className="text-[13px] font-medium text-on-brand-muted">{c.subtitle}</span>
         </div>
         {messages.length > 0 ? (
           <button
@@ -81,7 +81,7 @@ export function ChatWidget({ t, lang }: { t: Dictionary; lang: Lang }) {
             onClick={clear}
             aria-label={c.clear}
             title={c.clear}
-            className="flex size-10 cursor-pointer items-center justify-center rounded-full text-on-navy hover:bg-white/10 hover:text-white"
+            className="flex size-10 cursor-pointer items-center justify-center rounded-full text-on-brand-muted hover:bg-on-brand/10 hover:text-on-brand"
           >
             <TrashIcon size={18} />
           </button>
@@ -91,7 +91,7 @@ export function ChatWidget({ t, lang }: { t: Dictionary; lang: Lang }) {
           onClick={() => setOpen(false)}
           aria-label={c.close}
           title={c.close}
-          className="flex size-10 cursor-pointer items-center justify-center rounded-full text-on-navy hover:bg-white/10 hover:text-white"
+          className="flex size-10 cursor-pointer items-center justify-center rounded-full text-on-brand-muted hover:bg-on-brand/10 hover:text-on-brand"
         >
           <CloseIcon />
         </button>
@@ -107,7 +107,7 @@ export function ChatWidget({ t, lang }: { t: Dictionary; lang: Lang }) {
                 key={suggestion}
                 type="button"
                 onClick={() => ask(suggestion)}
-                className="cursor-pointer rounded-full border border-line bg-white px-3.5 py-2 text-left text-sm font-semibold text-navy transition-colors hover:border-navy hover:bg-surface"
+                className="cursor-pointer rounded-full border border-line bg-card px-3.5 py-2 text-left text-sm font-semibold text-ink transition-colors hover:border-ink hover:bg-surface"
               >
                 {suggestion}
               </button>
@@ -143,20 +143,20 @@ export function ChatWidget({ t, lang }: { t: Dictionary; lang: Lang }) {
             placeholder={c.placeholder}
             maxLength={1500}
             autoComplete="off"
-            className="min-h-12 min-w-0 flex-1 rounded-xl border border-field bg-white px-3.5 text-base text-navy placeholder:text-[#7a8798]"
+            className="min-h-12 min-w-0 flex-1 rounded-xl border border-field bg-card px-3.5 text-base text-ink placeholder:text-placeholder"
           />
           <button
             type="submit"
             disabled={streaming || !draft.trim()}
             aria-label={c.send}
-            className="flex size-12 shrink-0 cursor-pointer items-center justify-center rounded-xl bg-navy text-white transition-colors hover:bg-navy-soft disabled:cursor-not-allowed disabled:opacity-50"
+            className="flex size-12 shrink-0 cursor-pointer items-center justify-center rounded-xl bg-primary text-on-primary transition-colors hover:bg-primary-hover disabled:cursor-not-allowed disabled:opacity-50"
           >
             <SendIcon />
           </button>
         </form>
         <p className="mt-2.5 text-xs leading-snug text-muted">
           {c.disclaimer}{" "}
-          <a href={whatsapp} target="_blank" rel="noopener noreferrer" className="font-bold text-navy underline">
+          <a href={whatsapp} target="_blank" rel="noopener noreferrer" className="font-bold text-ink underline">
             WhatsApp
           </a>
         </p>

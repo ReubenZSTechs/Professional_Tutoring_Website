@@ -2,7 +2,8 @@ import type { Metadata, Viewport } from "next";
 
 import { formatRupiah, rates } from "@/config/rates";
 import { site } from "@/config/site";
-import { getDictionary, langPaths, type Lang } from "@/content";
+import { getDictionary, langPaths, subjectPath, subjectPaths, type Lang } from "@/content";
+import { getSubject } from "@/content/subjects";
 
 export const viewport: Viewport = {
   themeColor: "#10233f",
@@ -33,6 +34,34 @@ export function buildMetadata(lang: Lang): Metadata {
   };
 }
 
+/** Title, description and language links for a subject page. */
+export function buildSubjectMetadata(lang: Lang, slug: string): Metadata {
+  const subject = getSubject(lang, slug);
+  if (!subject) return {};
+  const t = getDictionary(lang);
+  const title = t.subjectPage.metaTitle.replace("{subject}", subject.name);
+  const description = subject.intro;
+  const paths = subjectPaths(slug);
+  return {
+    metadataBase: new URL(site.url),
+    title,
+    description,
+    alternates: {
+      canonical: subjectPath(lang, slug),
+      languages: { en: paths.en, id: paths.id, "x-default": paths.en },
+    },
+    openGraph: {
+      type: "website",
+      siteName: site.brand,
+      title,
+      description,
+      url: subjectPath(lang, slug),
+      locale: lang === "id" ? "id_ID" : "en_US",
+    },
+    twitter: { card: "summary", title, description },
+  };
+}
+
 /** Structured data that helps search engines understand the service. */
 export function buildJsonLd(lang: Lang): Record<string, unknown> {
   const t = getDictionary(lang);
@@ -48,6 +77,7 @@ export function buildJsonLd(lang: Lang): Record<string, unknown> {
     provider: {
       "@type": "Person",
       name: site.fullName,
+      ...(site.photo ? { image: new URL(site.photo.src, site.url).toString() } : {}),
       email: site.email,
       telephone: `+${site.whatsapp.number}`,
       sameAs: Object.values(site.links).filter(Boolean),

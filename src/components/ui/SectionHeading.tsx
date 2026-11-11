@@ -1,26 +1,28 @@
-/** Section title with an optional intro line. `light` is for navy sections. */
+/** Section title with an optional intro line. `light` is for navy bands. */
 export function SectionHeading({
   title,
   intro,
   light = false,
   className = "",
+  as: Tag = "h2",
 }: {
   title: string;
   intro?: string;
   light?: boolean;
   className?: string;
+  as?: "h1" | "h2";
 }) {
   return (
     <div className={`flex max-w-[700px] flex-col gap-3 ${className}`}>
-      <h2
+      <Tag
         className={`text-[clamp(1.75rem,3vw,2.5rem)] leading-tight font-extrabold tracking-[-0.3px] text-balance ${
-          light ? "text-white" : "text-navy"
+          light ? "text-on-brand" : "text-ink"
         }`}
       >
         {title}
-      </h2>
+      </Tag>
       {intro ? (
-        <p className={`text-lg leading-relaxed ${light ? "text-on-navy" : "text-body"}`}>{intro}</p>
+        <p className={`text-lg leading-relaxed ${light ? "text-on-brand-muted" : "text-body"}`}>{intro}</p>
       ) : null}
     </div>
   );

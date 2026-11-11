@@ -38,10 +38,12 @@ export const site = {
   teachingHours: { en: "", id: "" },
 
   /**
-   * Portrait for the About section. Put the file in public/images/ and
-   * set this to "/images/reuben.jpg". Leave empty to show the initials card.
+   * Portrait for the About section (4:5 ratio). Put the file in
+   * public/images/. Leave empty to show an initials card instead.
    */
-  photo: "",
+  photo: { src: "/images/reuben.jpg", width: 390, height: 490 },
+  /** Small square head-and-shoulders crop, shown in the hero card. */
+  avatar: "/images/reuben-avatar.jpg",
 
   features: {
     /** The floating AI chat assistant. */

@@ -11,6 +11,21 @@ const dictionaries: Record<Lang, Dictionary> = { en, id };
 /** Where each language lives. English is the home page. */
 export const langPaths: Record<Lang, string> = { en: "/", id: "/id" };
 
+/** Link to a section of the home page, e.g. sectionHref("id", "rates") -> "/id#rates". */
+export function sectionHref(lang: Lang, section: string): string {
+  return `${lang === "en" ? "/" : langPaths[lang]}#${section}`;
+}
+
+/** Address of a subject page, e.g. "/subjects/physics" or "/id/subjects/physics". */
+export function subjectPath(lang: Lang, slug: string): string {
+  return `${lang === "en" ? "" : langPaths[lang]}/subjects/${slug}`;
+}
+
+/** The same subject page in every language, for the language switch. */
+export function subjectPaths(slug: string): Record<Lang, string> {
+  return { en: subjectPath("en", slug), id: subjectPath("id", slug) };
+}
+
 /** Values for the {placeholders} used in en.ts and id.ts. */
 function placeholders(lang: Lang): Record<string, string> {
   const values: Record<string, string> = {

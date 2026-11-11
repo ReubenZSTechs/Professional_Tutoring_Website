@@ -44,4 +44,4 @@ async def test_search_returns_relevant_passages(retriever: Retriever):
     results = await retriever.search("How much is an IGCSE lesson?")
     assert results, "Search returned nothing"
     assert results[0].similarity >= settings.rag_min_similarity
-    assert any("250,000" in chunk.content for chunk in results)
+    assert any("225,000" in chunk.content for chunk in results)

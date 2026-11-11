@@ -1,12 +1,12 @@
 # About Reuben Susanto Tutoring
 
 ## Who Reuben is
-Reuben Zachary Susanto is a private tutor based in Jakarta, Indonesia. He teaches Mathematics, Physics and Chemistry to students following the Cambridge (IGCSE, O Level, AS and A Level) and IB programmes. He has more than 10 years of private teaching experience.
+Reuben Zachary Susanto is a private tutor based in Jakarta, Indonesia. He teaches Mathematics, Physics and Chemistry to students following the Cambridge (IGCSE, O Level, AS and A Level) and IB programmes, and university-level mathematics to university students. He has more than 10 years of private teaching experience.
 
 Reuben is a final-year Computer Science student at Calvin Institute of Technology, specialising in AI Engineering, with a GPA of 3.90 out of 4.0. He was named on the Rector's List in 2024 and 2025.
 
 ## Who the lessons are for
-Lessons are for students at international schools and national-plus schools who are preparing for IGCSE, O Level, AS/A Level or IB exams. Most enquiries come from parents choosing a tutor for their child, and students are welcome to get in touch themselves.
+Lessons are for students at international schools and national-plus schools who are preparing for IGCSE, O Level, AS/A Level or IB exams. Most enquiries come from parents choosing a tutor for their child, and students are welcome to get in touch themselves. University students can book lessons in university mathematics.
 
 ## Teaching approach
 - Lessons are one-to-one, so the pace and the topics follow the individual student.

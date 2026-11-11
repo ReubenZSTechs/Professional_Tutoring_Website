@@ -8,7 +8,7 @@ export const en: Dictionary = {
   meta: {
     title: "Reuben Susanto Tutoring | IGCSE, A Level & IB Maths, Physics, Chemistry",
     description:
-      "Private one-to-one online tutoring in Maths, Physics and Chemistry for IGCSE, O Level, A Level and IB students. Taught in English or Bahasa Indonesia by a tutor with {years}+ years of experience. Free {consultMinutes}-minute consultation.",
+      "Private one-to-one online tutoring in Maths, Physics and Chemistry for IGCSE, O Level, A Level and IB students, plus university mathematics. Taught in English or Bahasa Indonesia by a tutor with {years}+ years of experience. Free {consultMinutes}-minute consultation.",
   },
   whatsappMessage: "Hello Reuben, I'd like to ask about tutoring.",
   nav: {
@@ -21,17 +21,21 @@ export const en: Dictionary = {
     openMenu: "Open menu",
     closeMenu: "Close menu",
     skipToContent: "Skip to content",
+    themeLight: "Switch to light mode",
+    themeDark: "Switch to dark mode",
   },
   hero: {
     eyebrow: "Online via Zoom · English & Bahasa Indonesia",
     title: "Clear, exam-focused tutoring in Maths, Physics and Chemistry",
-    sub: "Private one-to-one lessons for IGCSE, O Level, A Level and IB students with Reuben Susanto, a tutor with more than {years} years of teaching experience. For families across Indonesia and nearby time zones.",
+    sub: "Private one-to-one lessons for IGCSE, O Level, A Level and IB students, and for university students in mathematics, with Reuben Susanto, a tutor with more than {years} years of teaching experience.",
     ctaConsult: "Book a free consultation",
     ctaWhatsApp: "Chat on WhatsApp",
     glanceTitle: "At a glance",
+    tutorLabel: "Your tutor",
+    tutorMeta: "{years}+ years of teaching · Jakarta",
     glance: [
       { k: "Subjects", v: "Maths, Physics, Chemistry" },
-      { k: "Levels", v: "IGCSE, O Level, A Level, IB" },
+      { k: "Levels", v: "IGCSE, O Level, A Level, IB, University" },
       { k: "Format", v: "Private 1-to-1 lessons on Zoom" },
       { k: "Languages", v: "English, Bahasa Indonesia" },
       { k: "Schedule", v: "Jakarta time (WIB, UTC+7)" },
@@ -46,38 +50,23 @@ export const en: Dictionary = {
   },
   subjects: {
     title: "Subjects and levels",
-    intro: "Cambridge and IB syllabuses for students at international and national-plus schools.",
-    items: [
-      {
-        symbol: "∑",
-        name: "Mathematics",
-        levels: "IGCSE · O Level · AS/A Level · IB",
-        desc: "From algebra and geometry to calculus and statistics, with exam-style practice on every topic.",
-        codes: "Cambridge 0580 · 0606 · 4024 · 9709",
-      },
-      {
-        symbol: "F=ma",
-        name: "Physics",
-        levels: "IGCSE · IB",
-        desc: "Forces, energy, waves and electricity explained step by step, with plenty of worked problems.",
-        codes: "Cambridge 0625",
-      },
-      {
-        symbol: "H₂O",
-        name: "Chemistry",
-        levels: "IGCSE · IB",
-        desc: "Atomic structure, bonding and reactions, plus clear methods for calculations like moles and concentration.",
-        codes: "Cambridge 0620",
-      },
-      {
-        symbol: "</>",
-        name: "Computer Science & Python",
-        levels: "IGCSE · Beginners",
-        desc: "Programming and computational thinking, taught by a Computer Science student who builds AI systems.",
-        codes: "Cambridge 0478",
-        badge: "Coming soon",
-      },
-    ],
+    intro: "Cambridge and IB syllabuses for school students, plus university mathematics. Open a subject to see every topic covered.",
+    seeTopics: "See topics",
+  },
+  subjectPage: {
+    breadcrumb: "All subjects",
+    topicsTitle: "What we cover",
+    ratesTitle: "Rates per {sessionMinutes}-minute lesson",
+    perSession: "per session",
+    consultTitle: "Start with a free consultation",
+    consultText: "A {consultMinutes}-minute Zoom call to see where the student is, agree on goals and choose a schedule. No charge and no obligation.",
+    ctaConsult: "Book a free consultation",
+    ctaWhatsApp: "Ask on WhatsApp",
+    otherSubjects: "Other subjects",
+    comingSoonTitle: "Coming soon",
+    comingSoonText: "These lessons are not open for booking yet. Send a message and you'll be told as soon as they start.",
+    notifyMessage: "Hello Reuben, please let me know when {subject} lessons start.",
+    metaTitle: "{subject} tutoring: topics and rates | Reuben Susanto Tutoring",
   },
   why: {
     title: "Why parents choose Reuben",
@@ -110,6 +99,7 @@ export const en: Dictionary = {
       igcse: { name: "IGCSE & O Level", note: "Maths · Physics · Chemistry" },
       alevel: { name: "AS & A Level", note: "Mathematics" },
       ib: { name: "IB", note: "Maths · Physics · Chemistry" },
+      university: { name: "University Mathematics", note: "Calculus · Linear Algebra · Discrete Maths" },
     },
     notes: [
       "{sessionsPerWeek} sessions per week are recommended for steady progress",
@@ -216,7 +206,7 @@ export const en: Dictionary = {
     items: [
       {
         q: "How much do lessons cost?",
-        a: "Per {sessionMinutes}-minute lesson: {priceIgcse} for IGCSE and O Level, {priceAlevel} for AS and A Level, and {priceIb} for IB. There are no packages or discounts, and the first {consultMinutes}-minute consultation is free.",
+        a: "Per {sessionMinutes}-minute lesson: {priceIgcse} for IGCSE and O Level, {priceAlevel} for AS and A Level, {priceIb} for IB, and {priceUniversity} for university mathematics. There are no packages or discounts, and the first {consultMinutes}-minute consultation is free.",
       },
       {
         q: "How does the free consultation work?",
@@ -269,6 +259,7 @@ export const en: Dictionary = {
         { value: "O Level", label: "O Level" },
         { value: "AS/A Level", label: "AS / A Level" },
         { value: "IB", label: "IB" },
+        { value: "University", label: "University" },
         { value: "Not sure yet", label: "Not sure yet" },
       ],
       phone: "WhatsApp number",

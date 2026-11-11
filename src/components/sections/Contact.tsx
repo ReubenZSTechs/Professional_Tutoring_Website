@@ -24,7 +24,7 @@ export function Contact({ t, lang }: SectionProps) {
                   href={whatsappUrl(t.whatsappMessage)}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-navy hover:text-blue"
+                  className="text-ink hover:text-link"
                 >
                   {site.whatsapp.display}
                 </a>
@@ -33,7 +33,7 @@ export function Contact({ t, lang }: SectionProps) {
             <div className="flex flex-col gap-1">
               <dt className={labelClass}>{t.contact.emailLabel}</dt>
               <dd className="text-[17px] font-bold break-all">
-                <a href={`mailto:${site.email}`} className="text-navy hover:text-blue">
+                <a href={`mailto:${site.email}`} className="text-ink hover:text-link">
                   {site.email}
                 </a>
               </dd>
@@ -41,7 +41,7 @@ export function Contact({ t, lang }: SectionProps) {
             {hours ? (
               <div className="flex flex-col gap-1">
                 <dt className={labelClass}>{t.contact.hoursLabel}</dt>
-                <dd className="text-[17px] font-bold">
+                <dd className="text-[17px] font-bold text-ink">
                   {hours} {t.contact.hoursSuffix}
                 </dd>
               </div>
@@ -49,12 +49,12 @@ export function Contact({ t, lang }: SectionProps) {
           </dl>
         </div>
 
-        <div className="rounded-[20px] border border-line bg-white p-6 shadow-card sm:p-8">
+        <div className="rounded-[20px] border border-line bg-card p-6 shadow-card sm:p-8">
           {site.features.contactForm ? (
             <ContactForm t={t} lang={lang} />
           ) : (
             <div className="flex flex-col gap-4">
-              <h3 className="text-xl font-extrabold">{t.contact.form.title}</h3>
+              <h3 className="text-xl font-extrabold text-ink">{t.contact.form.title}</h3>
               <ButtonLink href={whatsappUrl(t.whatsappMessage)}>
                 <ChatIcon />
                 {t.hero.ctaWhatsApp}

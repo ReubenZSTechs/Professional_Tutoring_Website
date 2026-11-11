@@ -21,7 +21,7 @@ Lessons are scheduled in Jakarta time (WIB, UTC+7). Students within about three 
 A laptop or tablet with Zoom installed and a stable internet connection.
 
 ## How much do lessons cost?
-Per 60-minute session: Rp 250,000 for IGCSE and O Level, Rp 300,000 for AS and A Level, and Rp 325,000 for IB. There are no discounts or packages. The first consultation of 40 minutes is free.
+Per 60-minute session: Rp 225,000 for IGCSE and O Level, Rp 275,000 for AS and A Level, Rp 325,000 for IB, and Rp 375,000 for university mathematics. There are no discounts or packages. The first consultation of 40 minutes is free.
 
 ## How many lessons per week are recommended?
 Two sessions per week are recommended.

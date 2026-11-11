@@ -11,11 +11,12 @@ A bilingual (English / Bahasa Indonesia) website for private online tutoring in 
 | I want to change… | Edit this |
 | --- | --- |
 | Email, WhatsApp number, LinkedIn, GitHub, Instagram | `src/config/site.ts` |
-| Years of experience, teaching hours, portrait photo | `src/config/site.ts` |
+| Years of experience, teaching hours, photos | `src/config/site.ts` (images in `public/images/`) |
 | Switch the chat or the contact form on or off | `src/config/site.ts` (`features`) |
 | Prices, lesson length, consultation length | `src/config/rates.ts` **and** `knowledge/tutoring/rates.md` |
 | Any wording on the page | `src/content/en.ts` and `src/content/id.ts` |
-| Colours and fonts | `src/app/globals.css` (the `@theme` block) |
+| Subjects, topic lists, subject pages | `src/content/subjects.ts` |
+| Colours (light and dark mode) and fonts | `src/app/globals.css` (`@theme` for light, `[data-theme="dark"]` for dark) |
 | Order of sections, or add/remove one | `src/components/LandingPage.tsx` |
 | The look of one section | `src/components/sections/<Section>.tsx` |
 | What the chat assistant knows | Markdown files in `knowledge/`, then `npm run ingest` |
@@ -27,7 +28,7 @@ After changing a file in `knowledge/`, run `npm run ingest` so the assistant pic
 
 ### Still to fill in
 
-- **Photo**: add `public/images/reuben.jpg` and set `photo: "/images/reuben.jpg"` in `src/config/site.ts`. Until then the About section shows a card with your initials.
+- **Sharper photo** (optional): the current portrait is 390×490 px. To use a larger original, replace `public/images/reuben.jpg` (keep a 4:5 ratio and update `width`/`height` in `src/config/site.ts`) and `public/images/reuben-avatar.jpg` (a square head-and-shoulders crop).
 - **Teaching hours**: set `teachingHours` in `src/config/site.ts`. The row is hidden while it is empty.
 - **Rescheduling policy**: the FAQ gives a general answer. Replace it in `src/content/en.ts`, `src/content/id.ts` and `knowledge/tutoring/policies.md`.
 - **Instagram**: optional, in `src/config/site.ts`.
@@ -44,7 +45,7 @@ cp .env.example .env    # then fill in the keys
 npm run dev
 ```
 
-Open http://localhost:3000 (English) or http://localhost:3000/id (Indonesian). `npm run dev` starts the website on port 3000 and the Python API on port 8000.
+Open http://localhost:3000 (English) or http://localhost:3000/id (Indonesian). Subject pages live at `/subjects/<name>`, e.g. http://localhost:3000/subjects/university-mathematics. `npm run dev` starts the website on port 3000 and the Python API on port 8000.
 
 The page works without any keys. The chat needs `GEMINI_API_KEY` plus Supabase, and the contact form needs Supabase or Resend.
 
@@ -68,7 +69,8 @@ src/                  Website (Next.js)
   components/sections One file per page section
   components/chat     Chat widget
   components/contact  Enquiry form
-  app/                Routes: / (English), /id (Indonesian)
+  content/subjects.ts Subject cards and subject pages (topics by level)
+  app/                Routes: /, /subjects/* (English); /id, /id/subjects/* (Indonesian)
 backend/src/          API (FastAPI + LangGraph)
   agent/graph/        The chat graph and its nodes
   agent/routes/       /api/chat, /api/contact, /api/health
