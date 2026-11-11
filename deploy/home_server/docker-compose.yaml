@@ -1,0 +1,17 @@
+# Optional: run the Python backend on your own server instead of Vercel.
+#   docker compose -f deploy/home_server/docker-compose.yaml up -d --build
+# Then set BACKEND_URL on Vercel to this server's public https address.
+services:
+  api:
+    build:
+      context: ../..
+      dockerfile: deploy/home_server/Dockerfile
+    env_file: ../../.env
+    ports:
+      - "8000:8000"
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/api/health')"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
