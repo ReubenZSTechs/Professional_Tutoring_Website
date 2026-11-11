@@ -8,7 +8,7 @@ export const id: Dictionary = {
   meta: {
     title: "Reuben Susanto Tutoring | Les IGCSE, A Level & IB Matematika, Fisika, Kimia",
     description:
-      "Les privat online Matematika, Fisika, dan Kimia untuk siswa IGCSE, O Level, A Level, dan IB. Diajarkan dalam Bahasa Inggris atau Bahasa Indonesia oleh pengajar dengan pengalaman lebih dari {years} tahun. Konsultasi gratis {consultMinutes} menit.",
+      "Les privat online Matematika, Fisika, dan Kimia untuk siswa IGCSE, O Level, A Level, dan IB, serta matematika tingkat universitas. Diajarkan dalam Bahasa Inggris atau Bahasa Indonesia oleh pengajar dengan pengalaman lebih dari {years} tahun. Konsultasi gratis {consultMinutes} menit.",
   },
   whatsappMessage: "Halo Reuben, saya ingin bertanya tentang les privat.",
   nav: {
@@ -21,17 +21,21 @@ export const id: Dictionary = {
     openMenu: "Buka menu",
     closeMenu: "Tutup menu",
     skipToContent: "Langsung ke konten",
+    themeLight: "Ganti ke mode terang",
+    themeDark: "Ganti ke mode gelap",
   },
   hero: {
     eyebrow: "Online via Zoom · Bahasa Inggris & Bahasa Indonesia",
     title: "Les Matematika, Fisika, dan Kimia yang jelas dan fokus pada ujian",
-    sub: "Les privat satu lawan satu untuk siswa IGCSE, O Level, A Level, dan IB bersama Reuben Susanto, pengajar dengan pengalaman mengajar lebih dari {years} tahun. Untuk keluarga di seluruh Indonesia dan zona waktu terdekat.",
+    sub: "Les privat satu lawan satu untuk siswa IGCSE, O Level, A Level, dan IB, serta mahasiswa untuk matematika universitas, bersama Reuben Susanto, pengajar dengan pengalaman mengajar lebih dari {years} tahun.",
     ctaConsult: "Jadwalkan konsultasi gratis",
     ctaWhatsApp: "Chat via WhatsApp",
     glanceTitle: "Sekilas",
+    tutorLabel: "Pengajar Anda",
+    tutorMeta: "{years}+ tahun mengajar · Jakarta",
     glance: [
       { k: "Mata pelajaran", v: "Matematika, Fisika, Kimia" },
-      { k: "Jenjang", v: "IGCSE, O Level, A Level, IB" },
+      { k: "Jenjang", v: "IGCSE, O Level, A Level, IB, Universitas" },
       { k: "Format", v: "Les privat 1-on-1 via Zoom" },
       { k: "Bahasa", v: "Inggris, Indonesia" },
       { k: "Jadwal", v: "Waktu Jakarta (WIB, UTC+7)" },
@@ -46,38 +50,23 @@ export const id: Dictionary = {
   },
   subjects: {
     title: "Mata pelajaran dan jenjang",
-    intro: "Kurikulum Cambridge dan IB untuk siswa sekolah internasional dan nasional plus.",
-    items: [
-      {
-        symbol: "∑",
-        name: "Matematika",
-        levels: "IGCSE · O Level · AS/A Level · IB",
-        desc: "Dari aljabar dan geometri hingga kalkulus dan statistika, dengan latihan soal bergaya ujian di setiap topik.",
-        codes: "Cambridge 0580 · 0606 · 4024 · 9709",
-      },
-      {
-        symbol: "F=ma",
-        name: "Fisika",
-        levels: "IGCSE · IB",
-        desc: "Gaya, energi, gelombang, dan listrik dijelaskan langkah demi langkah, dengan banyak contoh soal.",
-        codes: "Cambridge 0625",
-      },
-      {
-        symbol: "H₂O",
-        name: "Kimia",
-        levels: "IGCSE · IB",
-        desc: "Struktur atom, ikatan, dan reaksi, serta cara yang jelas untuk perhitungan seperti mol dan konsentrasi.",
-        codes: "Cambridge 0620",
-      },
-      {
-        symbol: "</>",
-        name: "Ilmu Komputer & Python",
-        levels: "IGCSE · Pemula",
-        desc: "Pemrograman dan berpikir komputasional, diajar oleh mahasiswa Ilmu Komputer yang membangun sistem AI.",
-        codes: "Cambridge 0478",
-        badge: "Segera hadir",
-      },
-    ],
+    intro: "Kurikulum Cambridge dan IB untuk siswa sekolah, serta matematika tingkat universitas. Buka mata pelajaran untuk melihat semua topik yang dibahas.",
+    seeTopics: "Lihat topik",
+  },
+  subjectPage: {
+    breadcrumb: "Semua mata pelajaran",
+    topicsTitle: "Materi yang dibahas",
+    ratesTitle: "Biaya per sesi {sessionMinutes} menit",
+    perSession: "per sesi",
+    consultTitle: "Mulai dengan konsultasi gratis",
+    consultText: "Panggilan Zoom {consultMinutes} menit untuk melihat kemampuan siswa, menentukan target, dan memilih jadwal. Tanpa biaya dan tanpa kewajiban.",
+    ctaConsult: "Jadwalkan konsultasi gratis",
+    ctaWhatsApp: "Tanya via WhatsApp",
+    otherSubjects: "Mata pelajaran lain",
+    comingSoonTitle: "Segera hadir",
+    comingSoonText: "Les ini belum dibuka. Kirim pesan dan Anda akan diberi tahu begitu les dimulai.",
+    notifyMessage: "Halo Reuben, mohon kabari saya saat les {subject} dimulai.",
+    metaTitle: "Les {subject}: topik dan biaya | Reuben Susanto Tutoring",
   },
   why: {
     title: "Mengapa orang tua memilih Reuben",
@@ -110,6 +99,7 @@ export const id: Dictionary = {
       igcse: { name: "IGCSE & O Level", note: "Matematika · Fisika · Kimia" },
       alevel: { name: "AS & A Level", note: "Matematika" },
       ib: { name: "IB", note: "Matematika · Fisika · Kimia" },
+      university: { name: "Matematika Universitas", note: "Kalkulus · Aljabar Linear · Matematika Diskrit" },
     },
     notes: [
       "Disarankan {sessionsPerWeek} sesi per minggu agar kemajuan konsisten",
@@ -216,7 +206,7 @@ export const id: Dictionary = {
     items: [
       {
         q: "Berapa biaya les?",
-        a: "Per sesi {sessionMinutes} menit: {priceIgcse} untuk IGCSE dan O Level, {priceAlevel} untuk AS dan A Level, serta {priceIb} untuk IB. Tidak ada paket atau diskon, dan konsultasi pertama selama {consultMinutes} menit gratis.",
+        a: "Per sesi {sessionMinutes} menit: {priceIgcse} untuk IGCSE dan O Level, {priceAlevel} untuk AS dan A Level, {priceIb} untuk IB, serta {priceUniversity} untuk matematika universitas. Tidak ada paket atau diskon, dan konsultasi pertama selama {consultMinutes} menit gratis.",
       },
       {
         q: "Bagaimana konsultasi gratisnya?",
@@ -269,6 +259,7 @@ export const id: Dictionary = {
         { value: "O Level", label: "O Level" },
         { value: "AS/A Level", label: "AS / A Level" },
         { value: "IB", label: "IB" },
+        { value: "University", label: "Universitas" },
         { value: "Not sure yet", label: "Belum yakin" },
       ],
       phone: "Nomor WhatsApp",

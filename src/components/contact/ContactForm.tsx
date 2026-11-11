@@ -12,8 +12,8 @@ type Status = "idle" | "sending" | "sent" | "error";
 type Errors = Partial<Record<"name" | "phone" | "email", string>>;
 
 const fieldClass =
-  "min-h-12 w-full rounded-[10px] border border-field bg-white px-3.5 text-base text-navy placeholder:text-[#7a8798] aria-[invalid=true]:border-red-600";
-const labelClass = "text-sm font-bold";
+  "min-h-12 w-full rounded-[10px] border border-field bg-card px-3.5 text-base text-ink placeholder:text-placeholder aria-[invalid=true]:border-danger-ink";
+const labelClass = "text-sm font-bold text-ink";
 
 export function ContactForm({ t, lang }: { t: Dictionary; lang: Lang }) {
   const f = t.contact.form;
@@ -66,10 +66,10 @@ export function ContactForm({ t, lang }: { t: Dictionary; lang: Lang }) {
   if (status === "sent") {
     return (
       <div role="status" className="flex flex-col items-start gap-3.5 py-6">
-        <span aria-hidden="true" className="flex size-[52px] items-center justify-center rounded-full bg-accent text-navy">
+        <span aria-hidden="true" className="flex size-[52px] items-center justify-center rounded-full bg-accent text-on-accent">
           <CheckIcon size={26} />
         </span>
-        <h3 className="text-[22px] font-extrabold">{f.sentTitle}</h3>
+        <h3 className="text-[22px] font-extrabold text-ink">{f.sentTitle}</h3>
         <p className="text-base leading-relaxed text-body">{f.sentText}</p>
         <button type="button" onClick={() => setStatus("idle")} className={buttonClass("outline", "md", "mt-1 cursor-pointer")}>
           {f.sendAnother}
@@ -82,7 +82,7 @@ export function ContactForm({ t, lang }: { t: Dictionary; lang: Lang }) {
 
   return (
     <form onSubmit={onSubmit} noValidate className="flex flex-col gap-[18px]">
-      <h3 className="text-xl font-extrabold">{f.title}</h3>
+      <h3 className="text-xl font-extrabold text-ink">{f.title}</h3>
 
       <div className="flex flex-col gap-1.5">
         <label htmlFor="f-name" className={labelClass}>
@@ -100,7 +100,7 @@ export function ContactForm({ t, lang }: { t: Dictionary; lang: Lang }) {
           className={fieldClass}
         />
         {errors.name ? (
-          <p id="f-name-error" className="text-sm font-medium text-red-700">
+          <p id="f-name-error" className="text-sm font-medium text-danger-ink">
             {errors.name}
           </p>
         ) : null}
@@ -158,7 +158,7 @@ export function ContactForm({ t, lang }: { t: Dictionary; lang: Lang }) {
             className={fieldClass}
           />
           {errors.phone ? (
-            <p id="f-phone-error" className="text-sm font-medium text-red-700">
+            <p id="f-phone-error" className="text-sm font-medium text-danger-ink">
               {errors.phone}
             </p>
           ) : null}
@@ -180,7 +180,7 @@ export function ContactForm({ t, lang }: { t: Dictionary; lang: Lang }) {
           className={fieldClass}
         />
         {errors.email ? (
-          <p id="f-email-error" className="text-sm font-medium text-red-700">
+          <p id="f-email-error" className="text-sm font-medium text-danger-ink">
             {errors.email}
           </p>
         ) : null}
@@ -207,9 +207,9 @@ export function ContactForm({ t, lang }: { t: Dictionary; lang: Lang }) {
       </div>
 
       {status === "error" ? (
-        <div role="alert" className="flex flex-col gap-3 rounded-xl border border-red-200 bg-red-50 p-4">
-          <p className="text-[15px] font-bold text-red-800">{f.errorTitle}</p>
-          <p className="text-sm text-red-800">{f.errorText}</p>
+        <div role="alert" className="flex flex-col gap-3 rounded-xl border border-danger-line bg-danger-bg p-4">
+          <p className="text-[15px] font-bold text-danger-ink">{f.errorTitle}</p>
+          <p className="text-sm text-danger-ink">{f.errorText}</p>
           <div className="flex flex-wrap gap-2.5">
             <ButtonLink href={whatsappUrl(t.whatsappMessage)} size="md">
               <ChatIcon size={18} />
@@ -226,7 +226,7 @@ export function ContactForm({ t, lang }: { t: Dictionary; lang: Lang }) {
       <button
         type="submit"
         disabled={sending}
-        className={buttonClass("navy", "lg", "cursor-pointer disabled:cursor-wait disabled:opacity-70")}
+        className={buttonClass("primary", "lg", "cursor-pointer disabled:cursor-wait disabled:opacity-70")}
       >
         {sending ? f.sending : f.submit}
       </button>

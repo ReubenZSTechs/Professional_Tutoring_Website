@@ -20,7 +20,9 @@ Next.js on Vercel ── rewrite /api/* ──► FastAPI (api/index.py → back
 - **Next.js App Router**, statically rendered. `/` is English and `/id` is Indonesian. Each has its own root layout so `<html lang>` is correct, and both render the same `LandingPage` component with a different dictionary.
 - **Wording** lives in `src/content/en.ts` and `id.ts`. Both follow the `Dictionary` type, so a missing translation is a type error. `{placeholders}` are filled from `src/config` by `getDictionary()`.
 - **Sections** are server components. Only the header menu, the contact form and the chat widget run JavaScript in the browser.
-- **Styling** is Tailwind CSS v4. Design tokens are CSS variables in `src/app/globals.css`.
+- **Subject pages** (`/subjects/<slug>`, `/id/subjects/<slug>`) are generated at build time from `src/content/subjects.ts`, which also feeds the cards on the home page.
+- **Styling** is Tailwind CSS v4. Design tokens are CSS variables in `src/app/globals.css`, named by role (`ink`, `body`, `card`, `brand`, `primary`…). Dark mode overrides the same variables under `[data-theme="dark"]`.
+- **Theme**: a small inline script in `RootShell` sets `data-theme` before the first paint, from the visitor's saved choice or their system setting. `ThemeToggle` in the header switches it and saves the choice in `localStorage`.
 
 ## Backend
 

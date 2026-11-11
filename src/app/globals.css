@@ -1,27 +1,93 @@
 @import "tailwindcss";
 
+/* `dark:` utilities apply when the page is in dark mode. */
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
 /*
- * Design tokens. Change a colour here and it changes across the site.
- * Each token becomes a Tailwind class, e.g. --color-navy -> bg-navy, text-navy.
+ * Design tokens, named by what they are used for. Each becomes a Tailwind
+ * class (e.g. --color-ink -> text-ink, bg-ink). Light values live here;
+ * dark values are in the [data-theme="dark"] block below. Change a colour
+ * in both places and it changes across the whole site.
  */
 @theme {
-  --color-navy: #10233f; /* headings, dark sections, primary buttons */
-  --color-navy-soft: #1e3a5f;
-  --color-blue: #1e4a85; /* links on hover, accents in text */
-  --color-accent: #f2a93b; /* amber: call-to-action buttons and highlights */
+  --color-page: #ffffff; /* page background */
+  --color-surface: #f4f7fb; /* alternate section background */
+  --color-card: #ffffff; /* cards, form fields */
+  --color-ink: #10233f; /* headings and strong text */
+  --color-body: #3b4c63; /* paragraph text */
+  --color-muted: #4a5a70; /* labels, secondary text */
+  --color-placeholder: #6b7a8f;
+  --color-line: #dce3ec; /* borders */
+  --color-line-soft: #edf1f6; /* dividers inside cards */
+  --color-field: #b6c2d3; /* form field borders */
+  --color-chip: #e9eff7; /* tag background */
+  --color-chip-ink: #1e3a5f; /* tag text */
+  --color-link: #1e4a85; /* links, level labels */
+
+  --color-brand: #10233f; /* navy bands: rates, footer, chat header */
+  --color-brand-edge: transparent;
+  --color-on-brand: #ffffff;
+  --color-on-brand-muted: #d3dce8;
+
+  --color-primary: #10233f; /* solid buttons */
+  --color-primary-hover: #1e3a5f;
+  --color-on-primary: #ffffff;
+
+  --color-accent: #f2a93b; /* amber: main call-to-action, highlights */
+  --color-accent-hover: #f5b752;
+  --color-on-accent: #10233f;
   --color-accent-soft: #fff3dc;
   --color-accent-ink: #7a4a00;
-  --color-body: #3b4c63; /* paragraph text */
-  --color-muted: #4a5a70; /* labels and secondary text */
-  --color-surface: #f4f7fb; /* light section background */
-  --color-chip: #e9eff7;
-  --color-line: #dce3ec; /* borders */
-  --color-line-soft: #edf1f6;
-  --color-field: #b6c2d3; /* form field borders */
-  --color-on-navy: #d3dce8; /* paragraph text on navy */
+
+  --color-danger-bg: #fef2f2;
+  --color-danger-line: #fecaca;
+  --color-danger-ink: #991b1b;
+
+  --color-header: rgb(255 255 255 / 0.9);
 
   --font-sans: var(--font-jakarta), ui-sans-serif, system-ui, sans-serif;
   --shadow-card: 0 12px 32px rgb(16 35 63 / 0.08);
+  --shadow-float: 0 10px 30px rgb(16 35 63 / 0.35);
+}
+
+/* Dark mode: deep navy rather than black, same amber accent. */
+:root[data-theme="dark"] {
+  --color-page: #0b1322;
+  --color-surface: #0f1a2d;
+  --color-card: #14213a;
+  --color-ink: #eaf0f8;
+  --color-body: #bbc7d8;
+  --color-muted: #a3b1c4;
+  --color-placeholder: #8392a8;
+  --color-line: #26354f;
+  --color-line-soft: #1d2b44;
+  --color-field: #3a4a66;
+  --color-chip: #1d2c47;
+  --color-chip-ink: #cddbf0;
+  --color-link: #9cc0fa;
+
+  --color-brand: #102039;
+  --color-brand-edge: #26354f;
+  --color-on-brand: #ffffff;
+  --color-on-brand-muted: #c3cfdf;
+
+  --color-primary: #eaf0f8;
+  --color-primary-hover: #ffffff;
+  --color-on-primary: #10233f;
+
+  --color-accent-soft: #3a2b12;
+  --color-accent-ink: #f6c77a;
+
+  --color-danger-bg: #3a1618;
+  --color-danger-line: #6b2a2e;
+  --color-danger-ink: #fdb4b4;
+
+  --color-header: rgb(11 19 34 / 0.88);
+
+  --shadow-card: 0 12px 32px rgb(0 0 0 / 0.35);
+  --shadow-float: 0 10px 30px rgb(0 0 0 / 0.55);
+
+  color-scheme: dark;
 }
 
 @layer base {
@@ -29,19 +95,20 @@
     scroll-behavior: smooth;
     scroll-padding-top: 5.5rem; /* keeps headings clear of the sticky header */
     -webkit-text-size-adjust: 100%;
+    color-scheme: light;
   }
 
   body {
-    @apply bg-white font-sans text-navy antialiased;
+    @apply bg-page font-sans text-ink antialiased;
   }
 
   :focus-visible {
-    outline: 3px solid var(--color-blue);
+    outline: 3px solid var(--color-link);
     outline-offset: 2px;
     border-radius: 6px;
   }
 
-  .on-navy :focus-visible {
+  .on-brand :focus-visible {
     outline-color: var(--color-accent);
   }
 

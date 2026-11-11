@@ -12,7 +12,7 @@ export function Regions({ t }: SectionProps) {
           {t.regions.items.map((region) => (
             <li
               key={region}
-              className="rounded-full border border-line bg-white px-4 py-2.5 text-[15px] font-semibold"
+              className="rounded-full border border-line bg-card px-4 py-2.5 text-[15px] font-semibold text-ink"
             >
               {region}
             </li>

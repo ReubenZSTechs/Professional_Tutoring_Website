@@ -15,9 +15,10 @@ export const rates = {
   consultationMinutes: 40,
   /** Price per lesson in Indonesian Rupiah. */
   levels: [
-    { id: "igcse", priceIdr: 250_000 },
-    { id: "alevel", priceIdr: 300_000 },
+    { id: "igcse", priceIdr: 225_000 },
+    { id: "alevel", priceIdr: 275_000 },
     { id: "ib", priceIdr: 325_000 },
+    { id: "university", priceIdr: 375_000 },
   ],
 } as const;
 

@@ -14,11 +14,11 @@ export function Why({ t }: SectionProps) {
             <li key={item.title} className="reveal flex flex-col gap-3">
               <span
                 aria-hidden="true"
-                className="flex size-11 items-center justify-center rounded-full bg-accent text-navy"
+                className="flex size-11 items-center justify-center rounded-full bg-accent text-on-accent"
               >
                 <CheckIcon size={22} />
               </span>
-              <h3 className="text-[19px] leading-snug font-extrabold">{item.title}</h3>
+              <h3 className="text-[19px] leading-snug font-extrabold text-ink">{item.title}</h3>
               <p className="text-[15px] leading-relaxed text-body">{item.text}</p>
             </li>
           ))}

@@ -1,16 +1,19 @@
 import type { AnchorHTMLAttributes, ReactNode } from "react";
 
-type Variant = "accent" | "navy" | "outline" | "outline-light";
+type Variant = "accent" | "primary" | "outline" | "outline-light";
 type Size = "md" | "lg";
 
 const base =
   "inline-flex items-center justify-center gap-2.5 rounded-xl font-bold no-underline transition-[background-color,color,border-color,transform] duration-150 active:translate-y-px";
 
 const variants: Record<Variant, string> = {
-  accent: "bg-accent text-navy hover:bg-[#f5b752]",
-  navy: "bg-navy text-white hover:bg-navy-soft",
-  outline: "border-2 border-navy text-navy hover:bg-navy hover:text-white",
-  "outline-light": "border-2 border-white text-white hover:bg-white hover:text-navy",
+  /** Amber: the main call to action. */
+  accent: "bg-accent text-on-accent hover:bg-accent-hover",
+  /** Solid navy in light mode, solid light in dark mode. */
+  primary: "bg-primary text-on-primary hover:bg-primary-hover",
+  outline: "border-2 border-ink text-ink hover:bg-ink hover:text-page",
+  /** For use on navy bands. */
+  "outline-light": "border-2 border-on-brand text-on-brand hover:bg-on-brand hover:text-brand",
 };
 
 const sizes: Record<Size, string> = {

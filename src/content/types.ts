@@ -28,6 +28,9 @@ export interface Dictionary {
     openMenu: string;
     closeMenu: string;
     skipToContent: string;
+    /** Labels for the theme button: what clicking it will switch to. */
+    themeLight: string;
+    themeDark: string;
   };
   hero: {
     eyebrow: string;
@@ -36,20 +39,28 @@ export interface Dictionary {
     ctaConsult: string;
     ctaWhatsApp: string;
     glanceTitle: string;
+    tutorLabel: string;
+    tutorMeta: string;
     glance: { k: string; v: string }[];
     trust: { value: string; label: string }[];
   };
-  subjects: {
-    title: string;
-    intro: string;
-    items: {
-      symbol: string;
-      name: string;
-      levels: string;
-      desc: string;
-      codes: string;
-      badge?: string;
-    }[];
+  /** Section heading only; the subject cards come from content/subjects.ts. */
+  subjects: { title: string; intro: string; seeTopics: string };
+  /** Wording on the individual subject pages. */
+  subjectPage: {
+    breadcrumb: string;
+    topicsTitle: string;
+    ratesTitle: string;
+    perSession: string;
+    consultTitle: string;
+    consultText: string;
+    ctaConsult: string;
+    ctaWhatsApp: string;
+    otherSubjects: string;
+    comingSoonTitle: string;
+    comingSoonText: string;
+    notifyMessage: string;
+    metaTitle: string;
   };
   why: { title: string; intro: string; items: TitleText[] };
   rates: {
