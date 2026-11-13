@@ -1,0 +1,10 @@
+# Runtime dependencies of the backend service (installed by Vercel when it
+# builds backend/). Keep the versions identical to backend/pyproject.toml.
+# Local development extras (pytest, ruff, pip-audit) are listed in pyproject.toml.
+fastapi==0.162.4
+uvicorn==0.54.0
+pydantic==2.14.3
+pydantic-settings==2.16.2
+httpx==0.28.1
+langgraph==1.2.20
+google-genai==3.1.0

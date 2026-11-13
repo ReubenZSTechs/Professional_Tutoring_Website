@@ -3,15 +3,15 @@ name = "reuben-susanto-tutoring-backend"
 version = "1.0.0"
 description = "FastAPI + LangGraph backend: RAG chat assistant and contact form."
 requires-python = ">=3.12"
-# Keep in sync with requirements.txt at the repo root (used by Vercel).
+# Keep identical to backend/requirements.txt (both are read by Vercel's Python build).
 dependencies = [
-    "fastapi>=0.162",
-    "uvicorn>=0.54",
-    "pydantic>=2.14",
-    "pydantic-settings>=2.16",
-    "httpx>=0.28",
-    "langgraph>=1.2",
-    "google-genai>=3.1",
+    "fastapi==0.162.4",
+    "uvicorn==0.54.0",
+    "pydantic==2.14.3",
+    "pydantic-settings==2.16.2",
+    "httpx==0.28.1",
+    "langgraph==1.2.20",
+    "google-genai==3.1.0",
 ]
 
 [project.optional-dependencies]

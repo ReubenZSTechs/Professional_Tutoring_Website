@@ -46,7 +46,7 @@ npm install
 ```
 
 ```bash
-python3 -m venv .venv && .venv/bin/pip install -r requirements.txt pytest pytest-asyncio ruff pip-audit
+python3 -m venv .venv && .venv/bin/pip install -r backend/requirements.txt pytest pytest-asyncio ruff pip-audit
 ```
 
 ```bash
@@ -93,7 +93,8 @@ backend/src/          API (FastAPI + LangGraph)
   rag/                Chunking, embeddings, retrieval
   core/               Settings, security middleware, rate limits, site facts
   services/           Supabase, email and Turnstile clients
-api/index.py          Vercel entry point for the backend
+backend/main.py       Vercel entry point for the backend service
+vercel.json           Vercel services: "app" (Next.js) and "backend" (FastAPI on /api/*)
 knowledge/            What the assistant knows (markdown)
 supabase/migrations/  Database schema and security hardening
 docs/                 Architecture, agent graph, RAG, security, deployment

@@ -65,7 +65,7 @@ What the assistant is **allowed** to mention is defined in `backend/src/core/sit
 
 ### Supply chain (A06 Vulnerable and Outdated Components, A08 Software and Data Integrity)
 
-- Dependencies are pinned (`package-lock.json`, `requirements.txt`).
+- Dependencies are pinned (`package-lock.json`, `backend/requirements.txt`).
 - Dependabot opens weekly update PRs (`.github/dependabot.yml`).
 - `npm run audit` runs `npm audit` and `pip-audit`.
 

@@ -1,9 +1,12 @@
 import type { NextConfig } from "next";
 
 /**
- * The Python backend (backend/src) answers every /api/* request.
- *  - In development it runs on port 8000 (`npm run dev` starts it).
- *  - On Vercel it runs as the serverless function in api/index.py.
+ * The Python backend (backend/) answers every /api/* request.
+ *  - On Vercel, the project runs as two services (see vercel.json) and
+ *    Vercel routes /api/* to the "backend" service before Next.js sees it,
+ *    so no rewrite is needed here.
+ *  - With `npm run dev` the backend runs on port 8000 and this file
+ *    forwards /api/* to it.
  *  - Set BACKEND_URL to send /api/* to a backend hosted elsewhere
  *    (see deploy/home_server).
  *
@@ -37,12 +40,8 @@ const nextConfig: NextConfig = {
     return [{ source: "/(.*)", headers: securityHeaders }];
   },
   async rewrites() {
-    return [
-      {
-        source: "/api/:path*",
-        destination: backendUrl ? `${backendUrl.replace(/\/$/, "")}/api/:path*` : "/api/",
-      },
-    ];
+    if (!backendUrl) return [];
+    return [{ source: "/api/:path*", destination: `${backendUrl.replace(/\/$/, "")}/api/:path*` }];
   },
 };
 

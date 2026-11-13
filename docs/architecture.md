@@ -8,7 +8,8 @@ Browser
   │  POST /api/chat     ── SSE stream ──┐
   │  POST /api/contact                  │
   ▼                                     ▼
-Next.js on Vercel ── rewrite /api/* ──► FastAPI (api/index.py → backend/src)
+Vercel router ─┬─ /api/* ──► service "backend": FastAPI (backend/main.py → backend/src)
+               └─ /*     ──► service "app": Next.js
                                           │  origin + size checks, rate limits, guardrails
                      ┌────────────────────┼─────────────────────┐
                      ▼                    ▼                     ▼
@@ -31,7 +32,8 @@ Next.js on Vercel ── rewrite /api/* ──► FastAPI (api/index.py → back
 
 ## Backend
 
-- **FastAPI** app in `backend/src/agent/main.py`, served under `/api`. In production (`ENVIRONMENT=production`) it refuses to start with missing secrets, hides the docs and returns generic errors.
+- **Two Vercel services** (`vercel.json`): `app` (Next.js, the repo root) and `backend` (FastAPI, `backend/`). Vercel's router sends `/api/*` to `backend` with the full path, and everything else to `app`. Neither service calls the other server-side: the browser calls `/api/*` on the same domain, so no service bindings are needed.
+- **FastAPI** app in `backend/src/agent/main.py`, served under `/api`. `backend/main.py` is the entry file Vercel loads; it only puts `src/` on the import path. In production (`ENVIRONMENT=production`) it refuses to start with missing secrets, hides the docs and returns generic errors.
 - `core/security.py` is an ASGI middleware: origin and content-type checks on writes, a body-size cap, and `no-store`/`nosniff` headers on every response.
 - `agent/container.py` builds the shared services once per instance: the graph, Supabase and email clients, the rate limiter, the Turnstile verifier and the security-event log. Routes receive it with `Depends(get_container)`, which is what the tests override.
 - **Stateless.** Chat history is kept in the visitor's browser tab (sessionStorage) and sent with each question, protected by an HMAC signature. Nothing needs to persist between requests, which suits serverless.

@@ -13,7 +13,7 @@
     "ingest": ".venv/bin/python backend/scripts/ingest.py",
     "test:api": ".venv/bin/python -m pytest backend/tests/unit -q",
     "test:live": ".venv/bin/python -m pytest backend/tests/integration backend/tests/evals -q",
-    "audit": "npm audit --omit=dev && .venv/bin/pip-audit -r requirements.txt"
+    "audit": "npm audit --omit=dev && .venv/bin/pip-audit -r backend/requirements.txt"
   },
   "dependencies": {
     "next": "^16.4.6",

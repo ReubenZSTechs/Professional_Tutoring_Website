@@ -1,6 +1,6 @@
 # Deployment
 
-The site runs on Vercel: Next.js for the pages and one Python serverless function (`api/index.py`) for the API, in Vercel's Singapore region (`sin1`, set in `vercel.json`). Supabase holds the data, Gemini is the LLM, Resend sends email, Cloudflare Turnstile is the bot check.
+The site runs on Vercel as one project with two **services** (`vercel.json`): `app` (Next.js, the repo root) serves the pages, and `backend` (FastAPI, the `backend/` folder) serves `/api/*`. Both run in Vercel's Singapore region (`sin1`). Python dependencies for the backend are read from `backend/requirements.txt`. Supabase holds the data, Gemini is the LLM, Resend sends email, Cloudflare Turnstile is the bot check.
 
 ## 1. Supabase
 
@@ -70,6 +70,8 @@ npm run ingest
 Leave `ALLOWED_ORIGINS` unset: the API then accepts requests only from `NEXT_PUBLIC_SITE_URL`. If you use preview deployments with the chat, set `ENVIRONMENT=preview` there (anything other than `production`), or the preview's origin will be refused.
 
 4. Deploy.
+
+`vercel.json` defines the two services and routes `/api/*` to `backend` and everything else to `app`; there is nothing to configure in the dashboard's build settings. Environment variables are shared by both services, so add each one once at project level. To run both services locally the way Vercel does, use `vercel dev` (or keep using `npm run dev`, which runs the same two processes).
 
 The API checks its configuration at startup. If a secret is missing in production it refuses to start and the function logs say which one.
 

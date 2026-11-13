@@ -1,7 +1,7 @@
 """The FastAPI application. All routes are served under /api.
 
 Run locally with:  uvicorn agent.main:app --app-dir backend/src --reload --port 8000
-On Vercel it is loaded by api/index.py.
+On Vercel it is loaded by backend/main.py (the "backend" service in vercel.json).
 """
 
 import uuid
