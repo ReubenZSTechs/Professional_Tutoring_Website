@@ -10,7 +10,7 @@ export function Footer({ t, lang }: SectionProps) {
     { href: sectionHref(lang, "subjects"), label: t.nav.subjects },
     { href: sectionHref(lang, "rates"), label: t.nav.rates },
     { href: sectionHref(lang, "experience"), label: t.nav.experience },
-    { href: sectionHref(lang, "faq"), label: t.nav.faq },
+    { href: sectionHref(lang, "ask"), label: t.nav.ask },
     { href: sectionHref(lang, "contact"), label: t.nav.contact },
   ];
   const social = [

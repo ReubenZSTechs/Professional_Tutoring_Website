@@ -8,10 +8,10 @@ import type { SectionProps } from "./types";
 
 /** Portrait if `site.photo` is set, otherwise a card with the initials. */
 function Portrait({ alt }: { alt: string }) {
-  const photo = site.photo;
+  const photo = site.photos.about;
   if (photo) {
     return (
-      <div className="relative w-full max-w-[420px]">
+      <div data-reveal className="relative w-full max-w-[420px]">
         {/* Amber frame offset behind the photo. */}
         <div aria-hidden="true" className="absolute inset-0 translate-x-3 translate-y-3 rounded-[20px] bg-accent" />
         <Image

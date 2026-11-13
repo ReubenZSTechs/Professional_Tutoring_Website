@@ -43,7 +43,11 @@
   --color-danger-line: #fecaca;
   --color-danger-ink: #991b1b;
 
-  --color-header: rgb(255 255 255 / 0.9);
+  --color-header: rgb(255 255 255 / 0.82);
+  /* Frosted-glass surfaces: a translucent fill plus a hairline edge. */
+  --color-glass: rgb(255 255 255 / 0.74);
+  --color-glass-edge: rgb(255 255 255 / 0.85);
+  --color-glass-ink: #10233f;
 
   --font-sans: var(--font-jakarta), ui-sans-serif, system-ui, sans-serif;
   --shadow-card: 0 12px 32px rgb(16 35 63 / 0.08);
@@ -82,7 +86,10 @@
   --color-danger-line: #6b2a2e;
   --color-danger-ink: #fdb4b4;
 
-  --color-header: rgb(11 19 34 / 0.88);
+  --color-header: rgb(11 19 34 / 0.78);
+  --color-glass: rgb(20 33 58 / 0.66);
+  --color-glass-edge: rgb(255 255 255 / 0.14);
+  --color-glass-ink: #eaf0f8;
 
   --shadow-card: 0 12px 32px rgb(0 0 0 / 0.35);
   --shadow-float: 0 10px 30px rgb(0 0 0 / 0.55);
@@ -124,28 +131,91 @@
 }
 
 /*
- * Gentle fade-up as a block scrolls into view. Pure CSS: browsers
- * without scroll-driven animations, and visitors who prefer reduced
- * motion, simply see the content.
+ * Frosted glass. Used sparingly: the header, the hero card and the chat
+ * pop-up. Browsers without backdrop-filter get a solid surface instead.
  */
-@media (prefers-reduced-motion: no-preference) {
-  @supports (animation-timeline: view()) {
-    .reveal {
-      animation: reveal linear both;
-      animation-timeline: view();
-      animation-range: entry 0% entry 40%;
-    }
+.glass {
+  background: var(--color-glass);
+  border: 1px solid var(--color-glass-edge);
+  -webkit-backdrop-filter: blur(18px) saturate(1.5);
+  backdrop-filter: blur(18px) saturate(1.5);
+}
+
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .glass {
+    background: var(--color-card);
+    border-color: var(--color-line);
   }
 }
 
-@keyframes reveal {
+/*
+ * Scroll-reveal, in both directions (driven by RevealObserver.tsx).
+ *
+ *   data-reveal              an element that should animate in
+ *   data-revealed            set while it is on screen
+ *   data-reveal-from="top"   it last left through the top edge, so it
+ *                            re-enters sliding down instead of up
+ *   --reveal-i               optional stagger index for grids
+ *
+ * The `html.js` prefix means: only hide things when JavaScript is running.
+ */
+html.js [data-reveal] {
+  opacity: 0;
+  transform: translateY(22px);
+  transition:
+    opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: calc(var(--reveal-i, 0) * 70ms);
+  will-change: opacity, transform;
+}
+
+html.js [data-reveal][data-reveal-from="top"] {
+  transform: translateY(-22px);
+}
+
+html.js [data-reveal][data-revealed] {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html.js [data-reveal] {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* Entrance on first paint for the hero. */
+@keyframes rise {
   from {
     opacity: 0;
-    transform: translateY(16px);
+    transform: translateY(18px);
   }
   to {
     opacity: 1;
     transform: none;
+  }
+}
+
+@keyframes photo-in {
+  from {
+    opacity: 0;
+    transform: scale(1.04);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .rise {
+    animation: rise 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation-delay: calc(var(--rise-i, 0) * 110ms);
+  }
+  .photo-in {
+    animation: photo-in 1.4s cubic-bezier(0.22, 1, 0.36, 1) both;
   }
 }
 

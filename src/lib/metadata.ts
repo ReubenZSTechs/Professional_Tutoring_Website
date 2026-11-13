@@ -77,7 +77,7 @@ export function buildJsonLd(lang: Lang): Record<string, unknown> {
     provider: {
       "@type": "Person",
       name: site.fullName,
-      ...(site.photo ? { image: new URL(site.photo.src, site.url).toString() } : {}),
+      ...(site.photos.about ? { image: new URL(site.photos.about.src, site.url).toString() } : {}),
       email: site.email,
       telephone: `+${site.whatsapp.number}`,
       sameAs: Object.values(site.links).filter(Boolean),

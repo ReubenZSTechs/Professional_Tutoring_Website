@@ -1,3 +1,5 @@
+import type { CSSProperties } from "react";
+
 import { Container } from "@/components/ui/Container";
 import { CheckIcon } from "@/components/ui/Icons";
 import { SectionHeading } from "@/components/ui/SectionHeading";
@@ -31,8 +33,8 @@ export function Experience({ t }: SectionProps) {
         </div>
 
         <ol className="relative flex flex-col gap-5 before:absolute before:top-3 before:bottom-3 before:left-[7px] before:w-0.5 before:bg-line">
-          {t.experience.items.map((item) => (
-            <li key={`${item.role}-${item.place}`} className="reveal relative pl-9">
+          {t.experience.items.map((item, index) => (
+            <li key={`${item.role}-${item.place}`} data-reveal style={{ "--reveal-i": index } as CSSProperties} className="relative pl-9">
               <span
                 aria-hidden="true"
                 className="absolute top-7 left-0 size-4 rounded-full border-[3px] border-accent bg-card"

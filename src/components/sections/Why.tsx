@@ -1,3 +1,5 @@
+import type { CSSProperties } from "react";
+
 import { Container } from "@/components/ui/Container";
 import { CheckIcon } from "@/components/ui/Icons";
 import { SectionHeading } from "@/components/ui/SectionHeading";
@@ -10,8 +12,8 @@ export function Why({ t }: SectionProps) {
       <Container className="flex flex-col gap-10">
         <SectionHeading title={t.why.title} intro={t.why.intro} />
         <ul className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
-          {t.why.items.map((item) => (
-            <li key={item.title} className="reveal flex flex-col gap-3">
+          {t.why.items.map((item, index) => (
+            <li key={item.title} data-reveal style={{ "--reveal-i": index } as CSSProperties} className="flex flex-col gap-3">
               <span
                 aria-hidden="true"
                 className="flex size-11 items-center justify-center rounded-full bg-accent text-on-accent"

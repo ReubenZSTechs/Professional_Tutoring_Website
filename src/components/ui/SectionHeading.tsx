@@ -13,7 +13,7 @@ export function SectionHeading({
   as?: "h1" | "h2";
 }) {
   return (
-    <div className={`flex max-w-[700px] flex-col gap-3 ${className}`}>
+    <div data-reveal className={`flex max-w-[700px] flex-col gap-3 ${className}`}>
       <Tag
         className={`text-[clamp(1.75rem,3vw,2.5rem)] leading-tight font-extrabold tracking-[-0.3px] text-balance ${
           light ? "text-on-brand" : "text-ink"

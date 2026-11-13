@@ -1,6 +1,8 @@
 import { Plus_Jakarta_Sans } from "next/font/google";
+import { headers } from "next/headers";
 import type { ReactNode } from "react";
 
+import { RevealObserver } from "@/components/ui/RevealObserver";
 import type { Lang } from "@/content";
 import { THEME_STORAGE_KEY } from "@/lib/theme";
 
@@ -14,22 +16,30 @@ const jakarta = Plus_Jakarta_Sans({
 });
 
 /**
- * Runs before the page is painted: applies the visitor's saved theme, or
- * their system setting, so the page never flashes the wrong colours.
+ * Runs before the page is painted:
+ *  - applies the visitor's saved theme, or their system setting, so the
+ *    page never flashes the wrong colours;
+ *  - marks the page as having JavaScript, which switches on the scroll
+ *    animations (without JavaScript everything is simply visible).
  */
-const themeScript = `(function(){try{var t=localStorage.getItem(${JSON.stringify(THEME_STORAGE_KEY)});if(t!=="light"&&t!=="dark"){t=window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"}document.documentElement.setAttribute("data-theme",t)}catch(e){}})()`;
+const bootScript = `(function(){var d=document.documentElement;d.classList.add("js");try{var t=localStorage.getItem(${JSON.stringify(THEME_STORAGE_KEY)});if(t!=="light"&&t!=="dark"){t=window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"}d.setAttribute("data-theme",t)}catch(e){}})()`;
 
 /** The <html> and <body> wrapper shared by the English and Indonesian pages. */
-export function RootShell({ lang, children }: { lang: Lang; children: ReactNode }) {
+export async function RootShell({ lang, children }: { lang: Lang; children: ReactNode }) {
+  // The per-request nonce from src/proxy.ts lets our inline scripts run under the CSP.
+  const nonce = (await headers()).get("x-nonce") ?? undefined;
   return (
-    // The theme script changes data-theme before React loads, hence the warning suppression.
+    // The boot script changes <html> attributes before React loads, hence the warning suppression.
     <html lang={lang} className={jakarta.variable} suppressHydrationWarning>
       {/* App Router root layouts use a plain <head>; next/head is only for the old pages/ router. */}
       {/* eslint-disable-next-line @next/next/no-head-element */}
       <head>
-        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+        <script nonce={nonce} dangerouslySetInnerHTML={{ __html: bootScript }} />
       </head>
-      <body>{children}</body>
+      <body>
+        {children}
+        <RevealObserver />
+      </body>
     </html>
   );
 }

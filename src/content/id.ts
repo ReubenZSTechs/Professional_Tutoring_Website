@@ -15,7 +15,7 @@ export const id: Dictionary = {
     subjects: "Mata pelajaran",
     rates: "Biaya",
     experience: "Pengalaman",
-    faq: "FAQ",
+    ask: "Tanya saya",
     contact: "Kontak",
     languageLabel: "Bahasa",
     openMenu: "Buka menu",
@@ -201,38 +201,22 @@ export const id: Dictionary = {
       "Uni Emirat Arab",
     ],
   },
-  faq: {
-    title: "Pertanyaan yang sering diajukan",
-    items: [
-      {
-        q: "Berapa biaya les?",
-        a: "Per sesi {sessionMinutes} menit: {priceIgcse} untuk IGCSE dan O Level, {priceAlevel} untuk AS dan A Level, {priceIb} untuk IB, serta {priceUniversity} untuk matematika universitas. Tidak ada paket atau diskon, dan konsultasi pertama selama {consultMinutes} menit gratis.",
-      },
-      {
-        q: "Bagaimana konsultasi gratisnya?",
-        a: "Berupa panggilan Zoom {consultMinutes} menit bersama Anda, anak Anda, dan Reuben. Kita melihat kemampuan anak, menentukan target, dan memilih jadwal. Tanpa biaya dan tanpa kewajiban untuk lanjut.",
-      },
-      {
-        q: "Berapa kali les dalam seminggu?",
-        a: "Disarankan {sessionsPerWeek} sesi per minggu agar kemajuan konsisten. Kita bisa membahas yang paling sesuai untuk anak Anda saat konsultasi.",
-      },
-      {
-        q: "Apakah les dalam Bahasa Inggris atau Bahasa Indonesia?",
-        a: "Bisa keduanya, atau campuran. Kita gunakan bahasa yang paling membantu anak Anda memahami materi.",
-      },
-      {
-        q: "Les menggunakan zona waktu apa?",
-        a: "Jadwal les mengikuti WIB (UTC+7). Siswa dalam selisih sekitar tiga jam dari waktu Jakarta, seperti Singapura, Malaysia, Jepang, atau Australia Barat, dipersilakan bergabung.",
-      },
-      {
-        q: "Apa yang dibutuhkan untuk les online?",
-        a: "Laptop atau tablet dengan Zoom dan koneksi internet yang stabil.",
-      },
-      {
-        q: "Apakah jadwal les bisa diubah?",
-        a: "Silakan hubungi Reuben via WhatsApp sedini mungkin. Ketentuannya disepakati bersama setiap keluarga saat konsultasi.",
-      },
+  ask: {
+    eyebrow: "Tanya apa saja",
+    title: "Ada pertanyaan? Tanyakan saja",
+    intro:
+      "Asisten ini menjawab dari catatan Reuben sendiri: latar belakang, materi yang diajarkan, biaya, dan cara kerja les. Bisa menjawab dalam Bahasa Indonesia atau Inggris.",
+    suggestions: [
+      "Berapa biaya les?",
+      "Bagaimana konsultasi gratisnya?",
+      "Apa pengalaman mengajar Reuben?",
+      "Mata pelajaran dan jenjang apa saja yang diajarkan?",
+      "Materi apa saja untuk tingkat universitas?",
+      "Apakah les dalam Bahasa Inggris atau Indonesia?",
+      "Les menggunakan zona waktu apa?",
+      "Apa yang dibutuhkan anak saya untuk les online?",
     ],
+    note: "Untuk hal yang tidak bisa dijawab asisten, hubungi Reuben langsung.",
   },
   contact: {
     title: "Jadwalkan konsultasi gratis",
@@ -307,5 +291,8 @@ export const id: Dictionary = {
     bookingPrompt: "Siap mengatur konsultasi gratis Anda?",
     disclaimer: "Ini adalah asisten AI. Mohon konfirmasi hal penting langsung dengan Reuben.",
     clear: "Hapus chat",
+    verifying: "Memeriksa bahwa Anda bukan robot…",
+    sessionError: "Pemeriksaan keamanan tidak lolos. Mohon muat ulang halaman dan coba lagi.",
+    limitError: "Anda mengirim banyak pesan dalam waktu singkat. Mohon tunggu sebentar, atau hubungi Reuben via WhatsApp.",
   },
 };

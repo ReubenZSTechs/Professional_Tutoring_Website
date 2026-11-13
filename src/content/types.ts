@@ -22,7 +22,7 @@ export interface Dictionary {
     subjects: string;
     rates: string;
     experience: string;
-    faq: string;
+    ask: string;
     contact: string;
     languageLabel: string;
     openMenu: string;
@@ -83,7 +83,15 @@ export interface Dictionary {
   };
   about: { title: string; photoAlt: string; paragraphs: string[]; tags: string[] };
   regions: { title: string; sub: string; items: string[] };
-  faq: { title: string; items: { q: string; a: string }[] };
+  /** The "Ask me anything" chat section that replaced the FAQ. */
+  ask: {
+    eyebrow: string;
+    title: string;
+    intro: string;
+    /** One-tap starter questions shown before the first message. */
+    suggestions: string[];
+    note: string;
+  };
   contact: {
     title: string;
     sub: string;
@@ -134,5 +142,8 @@ export interface Dictionary {
     bookingPrompt: string;
     disclaimer: string;
     clear: string;
+    verifying: string;
+    sessionError: string;
+    limitError: string;
   };
 }

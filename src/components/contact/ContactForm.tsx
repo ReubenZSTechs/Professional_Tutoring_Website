@@ -1,12 +1,13 @@
 "use client";
 
-import { useState, type FormEvent } from "react";
+import { useRef, useState, type FormEvent } from "react";
 
 import { ButtonLink, buttonClass } from "@/components/ui/Button";
 import { ChatIcon, CheckIcon, MailIcon } from "@/components/ui/Icons";
 import { site, whatsappUrl } from "@/config/site";
 import type { Dictionary, Lang } from "@/content";
-import { sendEnquiry, type EnquiryPayload } from "@/lib/api";
+import { RateLimitError, sendEnquiry, type EnquiryPayload } from "@/lib/api";
+import { getTurnstileToken } from "@/lib/turnstile";
 
 type Status = "idle" | "sending" | "sent" | "error";
 type Errors = Partial<Record<"name" | "phone" | "email", string>>;
@@ -19,6 +20,8 @@ export function ContactForm({ t, lang }: { t: Dictionary; lang: Lang }) {
   const f = t.contact.form;
   const [status, setStatus] = useState<Status>("idle");
   const [errors, setErrors] = useState<Errors>({});
+  const [limited, setLimited] = useState(false);
+  const turnstileHost = useRef<HTMLDivElement>(null);
 
   function validate(payload: EnquiryPayload): Errors {
     const found: Errors = {};
@@ -43,6 +46,7 @@ export function ContactForm({ t, lang }: { t: Dictionary; lang: Lang }) {
       email: text("email"),
       message: text("message"),
       language: lang,
+      turnstile_token: "",
       website: text("website"),
     };
 
@@ -55,10 +59,15 @@ export function ContactForm({ t, lang }: { t: Dictionary; lang: Lang }) {
     }
 
     setStatus("sending");
+    setLimited(false);
     try {
+      // Invisible bot check; the token is verified by the API before the enquiry is accepted.
+      const theme = document.documentElement.getAttribute("data-theme") === "dark" ? "dark" : "light";
+      payload.turnstile_token = await getTurnstileToken(turnstileHost.current!, theme);
       await sendEnquiry(payload);
       setStatus("sent");
-    } catch {
+    } catch (error) {
+      setLimited(error instanceof RateLimitError);
       setStatus("error");
     }
   }
@@ -200,6 +209,9 @@ export function ContactForm({ t, lang }: { t: Dictionary; lang: Lang }) {
         />
       </div>
 
+      {/* Turnstile renders here only while a challenge is being solved. */}
+      <div ref={turnstileHost} className="empty:hidden" />
+
       {/* Honeypot: hidden from people, tempting for bots. */}
       <div className="hidden" aria-hidden="true">
         <label htmlFor="f-website">Website</label>
@@ -209,7 +221,7 @@ export function ContactForm({ t, lang }: { t: Dictionary; lang: Lang }) {
       {status === "error" ? (
         <div role="alert" className="flex flex-col gap-3 rounded-xl border border-danger-line bg-danger-bg p-4">
           <p className="text-[15px] font-bold text-danger-ink">{f.errorTitle}</p>
-          <p className="text-sm text-danger-ink">{f.errorText}</p>
+          <p className="text-sm text-danger-ink">{limited ? t.chat.limitError : f.errorText}</p>
           <div className="flex flex-wrap gap-2.5">
             <ButtonLink href={whatsappUrl(t.whatsappMessage)} size="md">
               <ChatIcon size={18} />

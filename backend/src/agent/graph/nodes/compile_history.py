@@ -9,20 +9,22 @@ from pathlib import Path
 
 from core.config import PROMPTS_DIR, Settings
 from core.logging import get_logger
+from guardrails.sanitize import sanitize_text
 from llm.gemini import GeminiClient
 
-from agent.graph.state import ChatState, Message, render_history
+from agent.graph.state import ChatState, Message, data_block, new_block_id, render_history
 
 logger = get_logger(__name__)
 
 
 def clean_history(history: list[Message] | None, max_chars: int) -> list[Message]:
-    """Drop malformed entries and cap the length of each message."""
+    """Drop malformed entries, sanitise and cap the length of each message."""
     cleaned: list[Message] = []
     for item in history or []:
-        role, content = item.get("role"), str(item.get("content", "")).strip()
+        role = item.get("role")
+        content = sanitize_text(str(item.get("content", "")), max_chars)
         if role in ("user", "assistant") and content:
-            cleaned.append({"role": role, "content": content[:max_chars]})
+            cleaned.append({"role": role, "content": content})
     return cleaned
 
 
@@ -39,7 +41,7 @@ def make_compile_history(
         if older:
             try:
                 summary = await llm.generate(
-                    render_history(older),
+                    data_block("conversation", render_history(older), new_block_id()),
                     system=summarize_prompt,
                     model=settings.gemini_rewrite_model,
                     temperature=0.0,

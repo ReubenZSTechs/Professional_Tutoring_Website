@@ -17,6 +17,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 
 from core.config import KNOWLEDGE_DIR, get_settings  # noqa: E402
+from guardrails.injection import score_injection  # noqa: E402
 from llm.gemini import GeminiClient  # noqa: E402
 from rag.chunker import Chunk, chunk_markdown  # noqa: E402
 from rag.embedder import Embedder  # noqa: E402
@@ -29,7 +30,16 @@ def load_chunks(knowledge_dir: Path = KNOWLEDGE_DIR) -> list[Chunk]:
     chunks: list[Chunk] = []
     for path in sorted(knowledge_dir.rglob("*.md")):
         source = path.relative_to(knowledge_dir).as_posix()
-        chunks.extend(chunk_markdown(path.read_text(encoding="utf-8"), source=source))
+        text = path.read_text(encoding="utf-8")
+        # The knowledge base is trusted, but it is read by the model, so warn
+        # if a file contains text that looks like instructions to the assistant.
+        verdict = score_injection(text)
+        if verdict.score >= 3:
+            print(
+                f"WARNING: {source} contains instruction-like text ({', '.join(verdict.labels)}). "
+                "Check it is not something the assistant could be tricked by."
+            )
+        chunks.extend(chunk_markdown(text, source=source))
     return chunks
 
 

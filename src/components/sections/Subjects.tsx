@@ -1,3 +1,5 @@
+import type { CSSProperties } from "react";
+
 import { Badge } from "@/components/ui/Badge";
 import { Container } from "@/components/ui/Container";
 import { ArrowRightIcon } from "@/components/ui/Icons";
@@ -14,11 +16,13 @@ export function Subjects({ t, lang }: SectionProps) {
       <Container className="flex flex-col gap-10">
         <SectionHeading title={t.subjects.title} intro={t.subjects.intro} />
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {getSubjects(lang).map((subject) => (
+          {getSubjects(lang).map((subject, index) => (
             <a
               key={subject.slug}
               href={subjectPath(lang, subject.slug)}
-              className="reveal group flex flex-col gap-3.5 rounded-[18px] border border-line bg-card p-7 text-ink no-underline transition-[box-shadow,border-color,transform] duration-200 hover:-translate-y-0.5 hover:border-field hover:shadow-card"
+              data-reveal
+              style={{ "--reveal-i": index } as CSSProperties}
+              className="group flex flex-col gap-3.5 rounded-[18px] border border-line bg-card p-7 text-ink no-underline transition-[box-shadow,border-color,transform] duration-200 hover:-translate-y-0.5 hover:border-field hover:shadow-card"
             >
               <div className="flex items-start justify-between gap-3">
                 <span

@@ -12,6 +12,37 @@ from core.config import Settings, get_settings
 from google import genai
 from google.genai import types
 
+# Ask Gemini to refuse harmful content as well. Medium-and-above is the
+# strictest setting that does not block ordinary tutoring questions.
+SAFETY_SETTINGS = [
+    types.SafetySetting(category=category, threshold="BLOCK_MEDIUM_AND_ABOVE")
+    for category in (
+        "HARM_CATEGORY_HARASSMENT",
+        "HARM_CATEGORY_HATE_SPEECH",
+        "HARM_CATEGORY_SEXUALLY_EXPLICIT",
+        "HARM_CATEGORY_DANGEROUS_CONTENT",
+    )
+]
+
+
+def _visible_text(chunk: types.GenerateContentResponse) -> str:
+    """Text parts of a streamed chunk, never the model's thinking parts."""
+    pieces: list[str] = []
+    for candidate in chunk.candidates or []:
+        content = candidate.content
+        for part in (content.parts if content else None) or []:
+            if getattr(part, "thought", False):
+                continue
+            if part.text:
+                pieces.append(part.text)
+    return "".join(pieces)
+
+
+def is_quota_error(error: BaseException) -> bool:
+    """True for 'too many requests' / quota responses from the API."""
+    text = str(error)
+    return getattr(error, "code", None) == 429 or "429" in text[:40] or "RESOURCE_EXHAUSTED" in text
+
 
 class GeminiClient:
     def __init__(self, settings: Settings | None = None) -> None:
@@ -42,6 +73,7 @@ class GeminiClient:
                 system_instruction=system,
                 temperature=temperature,
                 max_output_tokens=max_output_tokens,
+                safety_settings=SAFETY_SETTINGS,
             ),
         )
         return (response.text or "").strip()
@@ -64,6 +96,7 @@ class GeminiClient:
                 temperature=temperature,
                 response_mime_type="application/json",
                 response_json_schema=schema,
+                safety_settings=SAFETY_SETTINGS,
             ),
         )
         return json.loads(response.text or "{}")
@@ -85,11 +118,14 @@ class GeminiClient:
                 system_instruction=system,
                 temperature=temperature,
                 max_output_tokens=max_output_tokens,
+                safety_settings=SAFETY_SETTINGS,
+                thinking_config=types.ThinkingConfig(include_thoughts=False),
             ),
         )
         async for chunk in stream:
-            if chunk.text:
-                yield chunk.text
+            yield_text = _visible_text(chunk)
+            if yield_text:
+                yield yield_text
 
     async def embed(self, texts: list[str], *, task_type: str | None = None) -> list[list[float]]:
         """Embed a batch of texts. `task_type` is only sent to models that accept it."""

@@ -15,7 +15,7 @@ export const en: Dictionary = {
     subjects: "Subjects",
     rates: "Rates",
     experience: "Experience",
-    faq: "FAQ",
+    ask: "Ask me",
     contact: "Contact",
     languageLabel: "Language",
     openMenu: "Open menu",
@@ -201,38 +201,22 @@ export const en: Dictionary = {
       "UAE",
     ],
   },
-  faq: {
-    title: "Frequently asked questions",
-    items: [
-      {
-        q: "How much do lessons cost?",
-        a: "Per {sessionMinutes}-minute lesson: {priceIgcse} for IGCSE and O Level, {priceAlevel} for AS and A Level, {priceIb} for IB, and {priceUniversity} for university mathematics. There are no packages or discounts, and the first {consultMinutes}-minute consultation is free.",
-      },
-      {
-        q: "How does the free consultation work?",
-        a: "It is a {consultMinutes}-minute Zoom call with you, your child and Reuben. We look at where your child is, agree on goals and choose a schedule. There is no charge and no obligation to continue.",
-      },
-      {
-        q: "How many lessons a week does my child need?",
-        a: "{sessionsPerWeek} sessions per week are recommended for steady progress. We can discuss what suits your child in the consultation.",
-      },
-      {
-        q: "Are lessons in English or Bahasa Indonesia?",
-        a: "Either, or a mix of both. We use whichever helps your child understand best.",
-      },
-      {
-        q: "Which time zone are lessons in?",
-        a: "Lessons are scheduled in WIB (UTC+7). Students within about three hours of Jakarta time, such as Singapore, Malaysia, Japan or Western Australia, are welcome.",
-      },
-      {
-        q: "What does my child need for online lessons?",
-        a: "A laptop or tablet with Zoom installed and a stable internet connection.",
-      },
-      {
-        q: "Can lessons be rescheduled?",
-        a: "Please message Reuben on WhatsApp as early as you can. The details are agreed with each family during the consultation.",
-      },
+  ask: {
+    eyebrow: "Ask me anything",
+    title: "Have a question? Just ask",
+    intro:
+      "This assistant answers from Reuben's own notes: his background, what he teaches, rates and how lessons work. It replies in English or Bahasa Indonesia.",
+    suggestions: [
+      "How much do lessons cost?",
+      "How does the free consultation work?",
+      "What is Reuben's teaching experience?",
+      "Which subjects and levels do you teach?",
+      "What do you cover at university level?",
+      "Are lessons in English or Bahasa Indonesia?",
+      "Which time zone are lessons in?",
+      "What does my child need for online lessons?",
     ],
+    note: "For anything the assistant can't answer, message Reuben directly.",
   },
   contact: {
     title: "Book your free consultation",
@@ -307,5 +291,8 @@ export const en: Dictionary = {
     bookingPrompt: "Ready to arrange your free consultation?",
     disclaimer: "This is an AI assistant. Please confirm important details with Reuben.",
     clear: "Clear chat",
+    verifying: "Checking you're not a robot…",
+    sessionError: "The security check didn't pass. Please reload the page and try again.",
+    limitError: "You've sent a lot of messages in a short time. Please wait a moment, or message Reuben on WhatsApp.",
   },
 };

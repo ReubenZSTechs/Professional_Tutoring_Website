@@ -38,12 +38,17 @@ export const site = {
   teachingHours: { en: "", id: "" },
 
   /**
-   * Portrait for the About section (4:5 ratio). Put the file in
-   * public/images/. Leave empty to show an initials card instead.
+   * Photos of Reuben. Put the files in public/images/ (JPEG, sizes in px).
+   *  - hero:   tall 2:3 portrait shown on the home page
+   *  - about:  4:5 upper-body crop for the About section
+   *  - avatar: small square head-and-shoulders crop (chat header)
+   * Set `hero` or `about` to null to show an initials card instead.
    */
-  photo: { src: "/images/reuben.jpg", width: 390, height: 490 },
-  /** Small square head-and-shoulders crop, shown in the hero card. */
-  avatar: "/images/reuben-avatar.jpg",
+  photos: {
+    hero: { src: "/images/reuben-hero.jpg", width: 800, height: 1200 },
+    about: { src: "/images/reuben-about.jpg", width: 640, height: 800 },
+    avatar: "/images/reuben-avatar.jpg",
+  },
 
   features: {
     /** The floating AI chat assistant. */

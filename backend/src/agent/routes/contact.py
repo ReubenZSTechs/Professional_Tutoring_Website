@@ -1,16 +1,18 @@
 """POST /api/contact: save an enquiry and email it to the tutor.
 
-The enquiry is stored in Supabase first, then emailed through Resend.
-Either one succeeding counts as delivered; if both fail the visitor is
-told to use WhatsApp or email instead.
+Every submission must carry a solved Turnstile token (bot check). The
+enquiry is stored in Supabase first, then emailed through Resend. Either
+one succeeding counts as delivered; if both fail the visitor is told to
+use WhatsApp or email instead.
 """
 
 import re
 from typing import Literal
 
 from core.logging import get_logger
-from core.rate_limit import enforce
+from core.rate_limit import client_ip, hash_ip
 from fastapi import APIRouter, Depends, HTTPException, Request
+from guardrails.sanitize import sanitize_text
 from pydantic import BaseModel, ConfigDict, Field, field_validator
 
 from agent.container import Container, get_container
@@ -23,8 +25,8 @@ PHONE_RE = re.compile(r"^\+?[\d\s().-]{6,24}$")
 
 
 class Enquiry(BaseModel):
-    # Trim spaces first, so a name of only spaces counts as empty.
-    model_config = ConfigDict(str_strip_whitespace=True)
+    # Trim spaces first, so a name of only spaces counts as empty; reject unknown fields.
+    model_config = ConfigDict(str_strip_whitespace=True, extra="forbid")
 
     name: str = Field(min_length=1, max_length=100)
     role: Literal["parent", "student"]
@@ -34,6 +36,7 @@ class Enquiry(BaseModel):
     email: str = Field(default="", max_length=120)
     message: str = Field(default="", max_length=2000)
     language: Literal["en", "id"] = "en"
+    turnstile_token: str = Field(default="", max_length=4096)
     website: str = Field(default="", max_length=200)  # honeypot: real visitors leave it empty
 
     @field_validator("phone")
@@ -55,12 +58,24 @@ class Enquiry(BaseModel):
 async def contact(
     enquiry: Enquiry, request: Request, container: Container = Depends(get_container)
 ) -> dict:
-    enforce(container.contact_limiter, request)
+    settings = container.settings
+    ip = client_ip(request)
+    ip_key = hash_ip(ip, settings.ip_hash_salt)
+    await container.limiter.enforce(container.policies.contact_hour, ip_key)
+
     if enquiry.website:
         # A bot filled the hidden field. Pretend it worked and do nothing.
+        await container.events.record("honeypot", ip_key)
         return {"ok": True}
+    if container.turnstile.enabled and not await container.turnstile.verify(
+        enquiry.turnstile_token, ip
+    ):
+        await container.events.record("turnstile_failed", ip_key)
+        raise HTTPException(status_code=403, detail={"code": "turnstile_failed"})
 
-    data = enquiry.model_dump(exclude={"website"})
+    data = enquiry.model_dump(exclude={"website", "turnstile_token"})
+    for key in ("name", "subject", "level", "message"):
+        data[key] = sanitize_text(data[key])
     data["email"] = data["email"] or None
     data["message"] = data["message"] or None
 

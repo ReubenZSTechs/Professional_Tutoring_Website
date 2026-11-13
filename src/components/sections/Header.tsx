@@ -43,12 +43,12 @@ export function Header({ t, lang, paths = langPaths }: SectionProps & { paths?: 
     { href: sectionHref(lang, "subjects"), label: t.nav.subjects },
     { href: sectionHref(lang, "rates"), label: t.nav.rates },
     { href: sectionHref(lang, "experience"), label: t.nav.experience },
-    { href: sectionHref(lang, "faq"), label: t.nav.faq },
+    { href: sectionHref(lang, "ask"), label: t.nav.ask },
     { href: sectionHref(lang, "contact"), label: t.nav.contact },
   ];
 
   return (
-    <header className="sticky top-0 z-40 border-b border-line bg-header backdrop-blur-md">
+    <header className="glass sticky top-0 z-40 rounded-none border-x-0 border-t-0 border-b-line">
       <a
         href="#main"
         className="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-50 focus:rounded-lg focus:bg-primary focus:px-4 focus:py-2 focus:text-on-primary"

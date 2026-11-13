@@ -1,3 +1,4 @@
+import { ChatProvider } from "@/components/chat/ChatProvider";
 import { ChatWidget } from "@/components/chat/ChatWidget";
 import { Footer } from "@/components/sections/Footer";
 import { Header } from "@/components/sections/Header";
@@ -20,7 +21,8 @@ export function SubjectPage({ subject, lang }: { subject: Subject; lang: Lang })
   const message = comingSoon ? p.notifyMessage.replace("{subject}", subject.name) : t.whatsappMessage;
 
   return (
-    <div id="top">
+    <ChatProvider t={t} lang={lang}>
+      <div id="top">
       <Header t={t} lang={lang} paths={subjectPaths(subject.slug)} />
       <main id="main">
         {/* Title */}
@@ -63,7 +65,7 @@ export function SubjectPage({ subject, lang }: { subject: Subject; lang: Lang })
                 {subject.groups.map((group) => (
                   <article
                     key={group.title}
-                    className="reveal flex flex-col gap-4 rounded-[18px] border border-line bg-card p-6"
+                    data-reveal className="flex flex-col gap-4 rounded-[18px] border border-line bg-card p-6"
                   >
                     <div className="flex flex-col gap-1">
                       <h3 className="text-lg font-extrabold text-ink">{group.title}</h3>
@@ -168,7 +170,8 @@ export function SubjectPage({ subject, lang }: { subject: Subject; lang: Lang })
         </section>
       </main>
       <Footer t={t} lang={lang} />
-      {site.features.chat ? <ChatWidget t={t} lang={lang} /> : null}
-    </div>
+      {site.features.chat ? <ChatWidget /> : null}
+      </div>
+    </ChatProvider>
   );
 }

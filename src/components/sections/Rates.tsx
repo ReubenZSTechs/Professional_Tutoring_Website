@@ -37,7 +37,7 @@ export function Rates({ t, lang }: SectionProps) {
           </div>
         </div>
 
-        <div className="reveal rounded-[20px] border border-transparent bg-card p-6 shadow-card sm:p-8 dark:border-line">
+        <div data-reveal className="rounded-[20px] border border-transparent bg-card p-6 shadow-card sm:p-8 dark:border-line">
           <table className="w-full border-collapse text-left">
             <caption className="mb-2 text-left text-sm font-bold tracking-[1.2px] text-muted uppercase">
               {t.rates.tableTitle}
