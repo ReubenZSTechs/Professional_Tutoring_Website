@@ -36,6 +36,13 @@ const securityHeaders = [
 
 const nextConfig: NextConfig = {
   poweredByHeader: false,
+  images: {
+    // Serve photos as-is from public/images. Vercel's image optimizer
+    // (/_next/image) is not routed to a Next.js app running as a Vercel
+    // service, so optimized URLs return 404 there. The photos are already
+    // resized and compressed (see public/images), so nothing is lost.
+    unoptimized: true,
+  },
   async headers() {
     return [{ source: "/(.*)", headers: securityHeaders }];
   },
