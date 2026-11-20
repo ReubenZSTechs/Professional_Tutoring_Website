@@ -5,7 +5,7 @@ description = "FastAPI + LangGraph backend: RAG chat assistant and contact form.
 requires-python = ">=3.12"
 # Keep identical to backend/requirements.txt (both are read by Vercel's Python build).
 dependencies = [
-    "fastapi==0.162.4",
+    "fastapi==0.163.1",
     "uvicorn==0.54.0",
     "pydantic==2.14.3",
     "pydantic-settings==2.16.2",
